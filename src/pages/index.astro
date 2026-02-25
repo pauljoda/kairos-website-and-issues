@@ -24,6 +24,9 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
       <a href="#preview">Preview</a>
       <a href="#privacy">Privacy</a>
       <a class="cta-link" href="#waitlist">Get updates</a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-live="polite">
+        <span data-theme-toggle-label>Theme</span>
+      </button>
     </nav>
   </header>
 
@@ -205,6 +208,82 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
   </footer>
 
   <script>
+    const themeStorageKey = "kairos-theme";
+    const themeRoot = document.documentElement;
+    const themeToggle = document.querySelector("[data-theme-toggle]");
+    const themeToggleLabel = document.querySelector("[data-theme-toggle-label]");
+    const systemThemeMedia = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const getStoredTheme = () => {
+      try {
+        return localStorage.getItem(themeStorageKey);
+      } catch {
+        return null;
+      }
+    };
+
+    const setStoredTheme = (value) => {
+      try {
+        localStorage.setItem(themeStorageKey, value);
+      } catch {
+        // Ignore storage failures (private browsing or restricted environments).
+      }
+    };
+
+    const resolveTheme = () => {
+      const storedTheme = getStoredTheme();
+      if (storedTheme === "dark" || storedTheme === "light") {
+        return storedTheme;
+      }
+
+      return systemThemeMedia.matches ? "dark" : "light";
+    };
+
+    const updateThemeToggle = (activeTheme) => {
+      if (!themeToggle || !themeToggleLabel) {
+        return;
+      }
+
+      const nextTheme = activeTheme === "dark" ? "light" : "dark";
+      const nextThemeLabel = nextTheme === "dark" ? "Dark" : "Light";
+      themeToggleLabel.textContent = nextThemeLabel;
+      themeToggle.setAttribute("aria-label", `Switch to ${nextTheme} mode`);
+      themeToggle.setAttribute("aria-pressed", String(activeTheme === "dark"));
+    };
+
+    const applyTheme = (theme, persist = false) => {
+      const normalizedTheme = theme === "dark" ? "dark" : "light";
+      themeRoot.setAttribute("data-theme", normalizedTheme);
+      themeRoot.style.colorScheme = normalizedTheme;
+
+      if (persist) {
+        setStoredTheme(normalizedTheme);
+      }
+
+      updateThemeToggle(normalizedTheme);
+    };
+
+    applyTheme(resolveTheme(), false);
+
+    if (themeToggle) {
+      themeToggle.addEventListener("click", () => {
+        const currentTheme = themeRoot.getAttribute("data-theme") === "dark" ? "dark" : "light";
+        const nextTheme = currentTheme === "dark" ? "light" : "dark";
+        applyTheme(nextTheme, true);
+      });
+    }
+
+    if (typeof systemThemeMedia.addEventListener === "function") {
+      systemThemeMedia.addEventListener("change", (event) => {
+        const storedTheme = getStoredTheme();
+        if (storedTheme === "dark" || storedTheme === "light") {
+          return;
+        }
+
+        applyTheme(event.matches ? "dark" : "light", false);
+      });
+    }
+
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const revealElements = Array.from(document.querySelectorAll("[data-reveal]"));

@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light;
   --bg-cream: #f8f4ee;
   --bg-warm: #f3e6dd;
   --bg-cool: #ece7f4;
@@ -10,12 +11,81 @@
   --gold: #c9a84c;
   --glass-fill: rgba(255, 255, 255, 0.45);
   --glass-stroke: rgba(255, 255, 255, 0.6);
+  --grain-dot: rgba(255, 255, 255, 0.34);
+  --mesh-highlight-1: rgba(255, 255, 255, 0.42);
+  --mesh-highlight-2: rgba(255, 255, 255, 0.32);
+  --mesh-highlight-3: rgba(255, 255, 255, 0.06);
+  --header-fill: rgba(255, 255, 255, 0.46);
+  --header-fill-scrolled: rgba(255, 255, 255, 0.64);
+  --header-stroke: rgba(255, 255, 255, 0.56);
+  --header-shadow: 0 10px 30px rgba(68, 44, 84, 0.08);
+  --header-shadow-scrolled: 0 14px 34px rgba(65, 39, 76, 0.16);
+  --cta-link-fill: rgba(255, 255, 255, 0.7);
+  --cta-link-stroke: rgba(255, 255, 255, 0.78);
+  --secondary-fill: rgba(255, 255, 255, 0.66);
+  --secondary-stroke: rgba(255, 255, 255, 0.74);
+  --chip-fill: linear-gradient(135deg, rgba(201, 168, 76, 0.22), rgba(155, 127, 199, 0.18));
+  --chip-stroke: rgba(255, 255, 255, 0.74);
+  --image-frame-stroke: rgba(255, 255, 255, 0.8);
+  --brand-icon-stroke: rgba(255, 255, 255, 0.76);
+  --brand-icon-shadow: 0 10px 24px rgba(80, 54, 105, 0.3);
+  --section-icon-stroke: rgba(255, 255, 255, 0.74);
+  --section-icon-shadow: 0 12px 30px rgba(76, 42, 72, 0.2);
+  --primary-button-shadow: 0 14px 30px rgba(122, 83, 130, 0.36);
+  --waitlist-sheen-1: rgba(255, 255, 255, 0.66);
+  --waitlist-sheen-2: rgba(255, 255, 255, 0.26);
+  --waitlist-tint-1: rgba(201, 168, 76, 0.16);
+  --waitlist-tint-2: rgba(155, 127, 199, 0.18);
+  --focus-ring: rgba(155, 127, 199, 0.62);
   --shadow-soft: 0 24px 60px rgba(65, 44, 80, 0.13);
   --shadow-strong: 0 34px 88px rgba(52, 29, 68, 0.2);
   --radius-xl: 34px;
   --radius-lg: 26px;
   --radius-md: 20px;
   --radius-sm: 14px;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-cream: #0f0d17;
+  --bg-warm: #1a1226;
+  --bg-cool: #110f1f;
+  --text-primary: #f0e7ff;
+  --text-body: #d9cee9;
+  --text-muted: #b5a5cc;
+  --amber: #d59571;
+  --lavender: #b69ae3;
+  --gold: #ddc76f;
+  --glass-fill: rgba(28, 22, 42, 0.6);
+  --glass-stroke: rgba(216, 199, 247, 0.23);
+  --grain-dot: rgba(255, 255, 255, 0.08);
+  --mesh-highlight-1: rgba(255, 255, 255, 0.08);
+  --mesh-highlight-2: rgba(255, 255, 255, 0.06);
+  --mesh-highlight-3: rgba(255, 255, 255, 0.02);
+  --header-fill: rgba(21, 16, 33, 0.72);
+  --header-fill-scrolled: rgba(21, 16, 33, 0.84);
+  --header-stroke: rgba(216, 199, 247, 0.2);
+  --header-shadow: 0 12px 34px rgba(0, 0, 0, 0.4);
+  --header-shadow-scrolled: 0 16px 40px rgba(0, 0, 0, 0.5);
+  --cta-link-fill: rgba(33, 25, 50, 0.78);
+  --cta-link-stroke: rgba(216, 199, 247, 0.26);
+  --secondary-fill: rgba(33, 25, 50, 0.72);
+  --secondary-stroke: rgba(216, 199, 247, 0.26);
+  --chip-fill: linear-gradient(135deg, rgba(213, 149, 113, 0.22), rgba(182, 154, 227, 0.2));
+  --chip-stroke: rgba(216, 199, 247, 0.28);
+  --image-frame-stroke: rgba(216, 199, 247, 0.24);
+  --brand-icon-stroke: rgba(216, 199, 247, 0.3);
+  --brand-icon-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+  --section-icon-stroke: rgba(216, 199, 247, 0.3);
+  --section-icon-shadow: 0 12px 30px rgba(0, 0, 0, 0.44);
+  --primary-button-shadow: 0 16px 34px rgba(0, 0, 0, 0.42);
+  --waitlist-sheen-1: rgba(255, 255, 255, 0.09);
+  --waitlist-sheen-2: rgba(255, 255, 255, 0.02);
+  --waitlist-tint-1: rgba(213, 149, 113, 0.14);
+  --waitlist-tint-2: rgba(182, 154, 227, 0.16);
+  --focus-ring: rgba(182, 154, 227, 0.72);
+  --shadow-soft: 0 28px 66px rgba(0, 0, 0, 0.42);
+  --shadow-strong: 0 36px 94px rgba(0, 0, 0, 0.52);
 }
 
 * {
@@ -45,7 +115,7 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.34) 1px, transparent 1px);
+  background-image: radial-gradient(var(--grain-dot) 1px, transparent 1px);
   background-size: 3px 3px;
   opacity: 0.22;
   z-index: -1;
@@ -90,9 +160,9 @@ a {
   position: absolute;
   inset: -8%;
   background-image:
-    radial-gradient(circle at 22% 18%, rgba(255, 255, 255, 0.42), transparent 40%),
-    radial-gradient(circle at 75% 54%, rgba(255, 255, 255, 0.32), transparent 36%),
-    linear-gradient(200deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0));
+    radial-gradient(circle at 22% 18%, var(--mesh-highlight-1), transparent 40%),
+    radial-gradient(circle at 75% 54%, var(--mesh-highlight-2), transparent 36%),
+    linear-gradient(200deg, var(--mesh-highlight-3), rgba(255, 255, 255, 0));
   will-change: transform;
 }
 
@@ -112,16 +182,16 @@ a {
   align-items: center;
   gap: 1rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.46);
-  border: 1px solid rgba(255, 255, 255, 0.56);
-  box-shadow: 0 10px 30px rgba(68, 44, 84, 0.08);
+  background: var(--header-fill);
+  border: 1px solid var(--header-stroke);
+  box-shadow: var(--header-shadow);
   backdrop-filter: blur(16px) saturate(124%);
   transition: box-shadow 220ms ease, background 220ms ease;
 }
 
 .site-header.is-scrolled {
-  background: rgba(255, 255, 255, 0.64);
-  box-shadow: 0 14px 34px rgba(65, 39, 76, 0.16);
+  background: var(--header-fill-scrolled);
+  box-shadow: var(--header-shadow-scrolled);
 }
 
 .brand {
@@ -140,8 +210,8 @@ a {
   width: 2.2rem;
   height: 2.2rem;
   border-radius: 0.74rem;
-  border: 1px solid rgba(255, 255, 255, 0.76);
-  box-shadow: 0 10px 24px rgba(80, 54, 105, 0.3);
+  border: 1px solid var(--brand-icon-stroke);
+  box-shadow: var(--brand-icon-shadow);
 }
 
 nav {
@@ -168,8 +238,33 @@ nav a:hover {
 .cta-link {
   padding: 0.52rem 0.84rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.78);
+  background: var(--cta-link-fill);
+  border: 1px solid var(--cta-link-stroke);
+}
+
+.theme-toggle {
+  appearance: none;
+  border: 1px solid var(--cta-link-stroke);
+  background: var(--cta-link-fill);
+  color: var(--text-primary);
+  border-radius: 999px;
+  padding: 0.5rem 0.84rem;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
 }
 
 main {
@@ -273,13 +368,13 @@ h3 {
 .button.primary {
   color: #fff;
   background: linear-gradient(120deg, var(--amber), var(--lavender));
-  box-shadow: 0 14px 30px rgba(122, 83, 130, 0.36);
+  box-shadow: var(--primary-button-shadow);
 }
 
 .button.secondary {
   color: var(--text-primary);
-  border: 1px solid rgba(255, 255, 255, 0.74);
-  background: rgba(255, 255, 255, 0.66);
+  border: 1px solid var(--secondary-stroke);
+  background: var(--secondary-fill);
 }
 
 .hero-points {
@@ -296,8 +391,8 @@ h3 {
   border-radius: 999px;
   font-size: 0.84rem;
   color: var(--text-primary);
-  background: linear-gradient(135deg, rgba(201, 168, 76, 0.22), rgba(155, 127, 199, 0.18));
-  border: 1px solid rgba(255, 255, 255, 0.74);
+  background: var(--chip-fill);
+  border: 1px solid var(--chip-stroke);
 }
 
 .hero-visual {
@@ -322,7 +417,7 @@ h3 {
   width: 100%;
   display: block;
   border-radius: 1.55rem;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--image-frame-stroke);
 }
 
 .phone-main {
@@ -421,8 +516,8 @@ h3 {
   width: 3rem;
   height: 3rem;
   border-radius: 0.86rem;
-  border: 1px solid rgba(255, 255, 255, 0.74);
-  box-shadow: 0 12px 30px rgba(76, 42, 72, 0.2);
+  border: 1px solid var(--section-icon-stroke);
+  box-shadow: var(--section-icon-shadow);
 }
 
 .preview-grid {
@@ -442,7 +537,7 @@ h3 {
   width: 100%;
   display: block;
   border-radius: 1.35rem;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--image-frame-stroke);
   box-shadow: 0 16px 36px rgba(42, 26, 58, 0.25);
   margin-bottom: 0.9rem;
 }
@@ -480,8 +575,8 @@ h3 {
 .cta .waitlist {
   padding: 1.4rem;
   background:
-    linear-gradient(140deg, rgba(255, 255, 255, 0.66), rgba(255, 255, 255, 0.26)),
-    linear-gradient(145deg, rgba(201, 168, 76, 0.16), rgba(155, 127, 199, 0.18));
+    linear-gradient(140deg, var(--waitlist-sheen-1), var(--waitlist-sheen-2)),
+    linear-gradient(145deg, var(--waitlist-tint-1), var(--waitlist-tint-2));
 }
 
 .waitlist p {
@@ -606,6 +701,8 @@ h3 {
   .site-header,
   .button,
   .button:hover,
+  .theme-toggle,
+  .theme-toggle:hover,
   nav a,
   .reveal,
   .reveal.in-view {

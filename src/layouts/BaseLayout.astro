@@ -23,6 +23,32 @@ const ogImage = new URL(ogImagePath, Astro.site ?? Astro.url).toString();
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <script is:inline>
+      (() => {
+        const themeStorageKey = "kairos-theme";
+        let storedTheme = null;
+
+        try {
+          storedTheme = localStorage.getItem(themeStorageKey);
+        } catch {
+          storedTheme = null;
+        }
+
+        const systemPrefersDark =
+          typeof window.matchMedia === "function" &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const resolvedTheme =
+          storedTheme === "dark" || storedTheme === "light"
+            ? storedTheme
+            : systemPrefersDark
+              ? "dark"
+              : "light";
+
+        document.documentElement.setAttribute("data-theme", resolvedTheme);
+        document.documentElement.style.colorScheme = resolvedTheme;
+      })();
+    </script>
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
