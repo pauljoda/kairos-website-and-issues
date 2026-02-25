@@ -1,0 +1,260 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <div class="atmosphere" aria-hidden="true">
+    <div class="orb orb-amber" data-parallax data-speed="0.08"></div>
+    <div class="orb orb-lavender" data-parallax data-speed="0.05"></div>
+    <div class="mesh" data-parallax data-speed="0.03"></div>
+  </div>
+
+  <header class="site-header wrapper" data-header>
+    <a class="brand" href="#top">
+      <img class="brand-icon" src="/images/app-icon.png" alt="" width="40" height="40" />
+      <span>Kairos</span>
+    </a>
+    <nav>
+      <a href="#why">Why Kairos</a>
+      <a href="#features">Features</a>
+      <a href="#preview">Preview</a>
+      <a href="#privacy">Privacy</a>
+      <a class="cta-link" href="#waitlist">Get updates</a>
+    </nav>
+  </header>
+
+  <main id="top" class="wrapper">
+    <section class="section hero" aria-labelledby="hero-title">
+      <div class="hero-copy glass reveal" data-reveal>
+        <p class="eyebrow">Sexual Health Tracking for iPhone</p>
+        <h1 id="hero-title">A modern health app for your most personal rhythms.</h1>
+        <p class="intro">
+          Kairos is privacy-first by design. Track desire, solo and partnered activity, and long-term
+          patterns with clear clinical language inside a warm, calm interface.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#waitlist">Join the launch list</a>
+          <a class="button secondary" href="#preview">Explore the product</a>
+        </div>
+        <ul class="hero-points" aria-label="Key product highlights">
+          <li>Local-first data storage</li>
+          <li>On-device intelligence insights</li>
+          <li>Dual-lane activity model</li>
+        </ul>
+      </div>
+
+      <div class="hero-visual reveal" data-reveal>
+        <div class="phone-stack" data-parallax data-speed="0.12">
+          <figure class="phone phone-main glass">
+            <img
+              src="/images/today.png"
+              alt="Kairos Today screen with daily status, check-in, and activity feed"
+              loading="eager"
+            />
+          </figure>
+          <figure class="phone phone-offset glass">
+            <img
+              src="/images/log-solo.png"
+              alt="Kairos log entry screen showing detailed solo entry logging"
+              loading="lazy"
+            />
+          </figure>
+          <div class="floating-note glass" data-parallax data-speed="0.18">
+            <p class="floating-label">Forecast Window</p>
+            <p class="floating-value">Peak expected Thu-Fri</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why" class="section narrative" aria-labelledby="why-title">
+      <div class="section-head reveal" data-reveal>
+        <p class="eyebrow">Named for Kairos</p>
+        <h2 id="why-title">The Greek concept of the right moment.</h2>
+      </div>
+      <div class="story-grid">
+        <article class="story glass reveal" data-reveal>
+          <p class="story-index">01</p>
+          <h3>Health-first language</h3>
+          <p>
+            Kairos avoids euphemistic design. It treats sexual health with the same precision and
+            dignity expected in any clinical wellness app.
+          </p>
+        </article>
+        <article class="story glass reveal" data-reveal>
+          <p class="story-index">02</p>
+          <h3>Warm, not sterile</h3>
+          <p>
+            Amber and lavender tones, layered materials, and gentle motion create emotional safety
+            without sacrificing clarity.
+          </p>
+        </article>
+        <article class="story glass reveal" data-reveal>
+          <p class="story-index">03</p>
+          <h3>Quality over quantity</h3>
+          <p>
+            The experience is built around meaning and timing, helping users understand when and why
+            shifts happen across their personal patterns.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="features" class="section" aria-labelledby="features-title">
+      <div class="section-head reveal" data-reveal>
+        <p class="eyebrow">Core experience</p>
+        <h2 id="features-title">Simple daily interactions, deep long-term insight.</h2>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card glass reveal" data-reveal>
+          <h3>Today Dashboard</h3>
+          <p>Check in quickly, review status at a glance, and jump into logging in seconds.</p>
+        </article>
+        <article class="feature-card glass reveal" data-reveal>
+          <h3>Dual-Lane Model</h3>
+          <p>Solo and partnered experiences stay distinct so trends are clean and interpretable.</p>
+        </article>
+        <article class="feature-card glass reveal" data-reveal>
+          <h3>Configurable Depth</h3>
+          <p>Personal, Short, and Detailed logging modes adapt to the precision each user wants.</p>
+        </article>
+        <article class="feature-card glass reveal" data-reveal>
+          <h3>Insight-First Design</h3>
+          <p>Forecasts and narrative summaries highlight what matters instead of dumping raw data.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="preview" class="section" aria-labelledby="preview-title">
+      <div class="section-head section-head-with-icon reveal" data-reveal>
+        <img
+          class="section-icon"
+          src="/images/app-icon.png"
+          alt="Kairos app icon"
+          width="56"
+          height="56"
+        />
+        <div>
+          <p class="eyebrow">In app preview</p>
+          <h2 id="preview-title">Built for calm, repeatable daily use.</h2>
+        </div>
+      </div>
+      <div class="preview-grid">
+        <article class="preview-main glass reveal" data-reveal>
+          <img
+            class="shot"
+            src="/images/today.png"
+            alt="Kairos Today screen with sparkline, check-in strip, and recent activity"
+            loading="lazy"
+          />
+          <h3>Today</h3>
+          <p>Daily status, desire check-ins, and recent activity in one focused space.</p>
+        </article>
+        <article class="preview-side glass reveal" data-reveal>
+          <img
+            class="shot"
+            src="/images/log-solo.png"
+            alt="Kairos detailed logging sheet for solo activity"
+            loading="lazy"
+          />
+          <h3>Log Activity</h3>
+          <p>Progressive disclosure keeps logging fast while still supporting deep detail capture.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="privacy" class="section" aria-labelledby="privacy-title">
+      <div class="privacy-surface glass reveal" data-reveal>
+        <div>
+          <p class="eyebrow">Privacy is product</p>
+          <h2 id="privacy-title">Data stays on device unless you explicitly choose otherwise.</h2>
+          <p>
+            Biometric lock, discreet mode foundations, and least-privilege permissions keep control
+            with the person using Kairos.
+          </p>
+        </div>
+        <ul class="privacy-list">
+          <li>No third-party analytics SDKs</li>
+          <li>Point-of-need permission requests only</li>
+          <li>Clinical export support for care conversations</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="waitlist" class="section cta reveal" data-reveal>
+      <div class="waitlist glass">
+        <p class="eyebrow">Launch</p>
+        <h2>Get first access to Kairos.</h2>
+        <p>
+          TestFlight and launch details are coming soon. Subscribe now to get notified when invite
+          spots open.
+        </p>
+        <a class="button primary" href="mailto:hello@kairos-app.com?subject=Kairos%20Launch%20Updates"
+          >Email for updates</a
+        >
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrapper footer">
+    <p>Kairos. Privacy-first sexual health tracking for iOS.</p>
+  </footer>
+
+  <script>
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const revealElements = Array.from(document.querySelectorAll("[data-reveal]"));
+    if (revealElements.length > 0) {
+      if (reduceMotion) {
+        revealElements.forEach((element) => element.classList.add("in-view"));
+      } else {
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("in-view");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.16, rootMargin: "0px 0px -8% 0px" }
+        );
+
+        revealElements.forEach((element) => revealObserver.observe(element));
+      }
+    }
+
+    const header = document.querySelector("[data-header]");
+    const parallaxElements = Array.from(document.querySelectorAll("[data-parallax]"));
+
+    if (!reduceMotion && (header || parallaxElements.length > 0)) {
+      let ticking = false;
+
+      const updateOnScroll = () => {
+        const scrollY = window.scrollY;
+
+        if (header) {
+          header.classList.toggle("is-scrolled", scrollY > 12);
+        }
+
+        for (const element of parallaxElements) {
+          const speed = Number(element.getAttribute("data-speed") || "0");
+          element.style.transform = `translate3d(0, ${scrollY * speed}px, 0)`;
+        }
+
+        ticking = false;
+      };
+
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!ticking) {
+            window.requestAnimationFrame(updateOnScroll);
+            ticking = true;
+          }
+        },
+        { passive: true }
+      );
+    }
+  </script>
+</BaseLayout>
