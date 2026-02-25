@@ -1,9 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-const baseUrl = import.meta.env.BASE_URL;
-const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
-const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
 ---
 
 <BaseLayout>
@@ -15,38 +11,50 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
 
   <header class="site-header wrapper" data-header>
     <a class="brand" href="#top">
-      <img class="brand-icon" src={asset("images/app-icon.png")} alt="" width="40" height="40" />
+      <img class="brand-icon" src="/images/app-icon.png" alt="" width="40" height="40" />
       <span>Kairos</span>
     </a>
-    <nav>
+    <div class="header-actions">
+      <button class="theme-toggle" aria-label="Toggle theme" data-theme-toggle>
+        <span class="icon-sun" aria-hidden="true">&#9728;&#65039;</span>
+        <span class="icon-moon" aria-hidden="true">&#9789;&#65039;</span>
+      </button>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" data-nav-toggle>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
+    <nav data-nav>
       <a href="#why">Why Kairos</a>
       <a href="#features">Features</a>
-      <a href="#preview">Preview</a>
+      <a href="#insights">Insights</a>
+      <a href="#together">Together</a>
       <a href="#privacy">Privacy</a>
       <a class="cta-link" href="#waitlist">Get updates</a>
-      <button class="theme-toggle" type="button" data-theme-toggle aria-live="polite">
-        <span data-theme-toggle-label>Theme</span>
-      </button>
     </nav>
   </header>
 
   <main id="top" class="wrapper">
+
+    <!-- ════════════════ HERO ════════════════ -->
     <section class="section hero" aria-labelledby="hero-title">
       <div class="hero-copy glass reveal" data-reveal>
         <p class="eyebrow">Sexual Health Tracking for iPhone</p>
         <h1 id="hero-title">A modern health app for your most personal rhythms.</h1>
         <p class="intro">
-          Kairos is privacy-first by design. Track desire, solo and partnered activity, and long-term
-          patterns with clear clinical language inside a warm, calm interface.
+          Whether you're tracking solo, with a partner, or both — Kairos gives you a private,
+          clinical-grade picture of your sexual health. No euphemisms, no cloud you can't trust,
+          no data that leaves your device.
         </p>
         <div class="hero-actions">
           <a class="button primary" href="#waitlist">Join the launch list</a>
-          <a class="button secondary" href="#preview">Explore the product</a>
+          <a class="button secondary" href="#features">Explore the product</a>
         </div>
         <ul class="hero-points" aria-label="Key product highlights">
-          <li>Local-first data storage</li>
-          <li>On-device intelligence insights</li>
-          <li>Dual-lane activity model</li>
+          <li>Solo &amp; partnered tracking</li>
+          <li>Automatic encrypted sync</li>
+          <li>On-device intelligence</li>
         </ul>
       </div>
 
@@ -54,26 +62,37 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
         <div class="phone-stack" data-parallax data-speed="0.12">
           <figure class="phone phone-main glass">
             <img
-              src={asset("images/today.png")}
+              class="shot-dark"
+              src="/images/today.png"
+              alt="Kairos Today screen with daily status, check-in, and activity feed"
+              loading="eager"
+            />
+            <img
+              class="shot-light"
+              src="/images/today-light.png"
               alt="Kairos Today screen with daily status, check-in, and activity feed"
               loading="eager"
             />
           </figure>
           <figure class="phone phone-offset glass">
             <img
-              src={asset("images/log-solo.png")}
+              class="shot-dark"
+              src="/images/log-solo.png"
+              alt="Kairos log entry screen showing detailed solo entry logging"
+              loading="lazy"
+            />
+            <img
+              class="shot-light"
+              src="/images/log-solo-light.png"
               alt="Kairos log entry screen showing detailed solo entry logging"
               loading="lazy"
             />
           </figure>
-          <div class="floating-note glass" data-parallax data-speed="0.18">
-            <p class="floating-label">Forecast Window</p>
-            <p class="floating-value">Peak expected Thu-Fri</p>
-          </div>
         </div>
       </div>
     </section>
 
+    <!-- ════════════════ WHY KAIROS ════════════════ -->
     <section id="why" class="section narrative" aria-labelledby="why-title">
       <div class="section-head reveal" data-reveal>
         <p class="eyebrow">Named for Kairos</p>
@@ -107,87 +126,245 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
       </div>
     </section>
 
+    <!-- ════════════════ FEATURES ════════════════ -->
     <section id="features" class="section" aria-labelledby="features-title">
       <div class="section-head reveal" data-reveal>
         <p class="eyebrow">Core experience</p>
         <h2 id="features-title">Simple daily interactions, deep long-term insight.</h2>
       </div>
-      <div class="feature-grid">
-        <article class="feature-card glass reveal" data-reveal>
-          <h3>Today Dashboard</h3>
-          <p>Check in quickly, review status at a glance, and jump into logging in seconds.</p>
-        </article>
-        <article class="feature-card glass reveal" data-reveal>
-          <h3>Dual-Lane Model</h3>
-          <p>Solo and partnered experiences stay distinct so trends are clean and interpretable.</p>
-        </article>
-        <article class="feature-card glass reveal" data-reveal>
-          <h3>Configurable Depth</h3>
-          <p>Personal, Short, and Detailed logging modes adapt to the precision each user wants.</p>
-        </article>
-        <article class="feature-card glass reveal" data-reveal>
-          <h3>Insight-First Design</h3>
-          <p>Forecasts and narrative summaries highlight what matters instead of dumping raw data.</p>
-        </article>
-      </div>
-    </section>
 
-    <section id="preview" class="section" aria-labelledby="preview-title">
-      <div class="section-head section-head-with-icon reveal" data-reveal>
-        <img
-          class="section-icon"
-          src={asset("images/app-icon.png")}
-          alt="Kairos app icon"
-          width="56"
-          height="56"
-        />
-        <div>
-          <p class="eyebrow">In app preview</p>
-          <h2 id="preview-title">Built for calm, repeatable daily use.</h2>
+      <!-- Feature: Today Dashboard -->
+      <div class="feature-showcase reveal" data-reveal>
+        <div class="feature-showcase-copy">
+          <span class="feature-showcase-icon" aria-hidden="true">&#128197;</span>
+          <h3>Today Dashboard</h3>
+          <p>
+            Your home base in Kairos. See your current desire level, recent check-ins, and activity
+            at a glance. The sparkline shows your 7-day desire trend, and one-tap logging gets you
+            in and out in seconds.
+          </p>
+          <ul class="feature-bullets">
+            <li>Daily desire check-in with visual trend</li>
+            <li>Quick-log button for fast entries</li>
+            <li>Recent activity feed with mood context</li>
+            <li>Status messages that adapt to your patterns</li>
+          </ul>
+        </div>
+        <div class="feature-showcase-visual">
+          <figure class="feature-phone glass">
+            <img class="shot-dark" src="/images/today.png" alt="Kairos Today dashboard in dark mode" loading="lazy" />
+            <img class="shot-light" src="/images/today-light.png" alt="Kairos Today dashboard in light mode" loading="lazy" />
+          </figure>
         </div>
       </div>
-      <div class="preview-grid">
-        <article class="preview-main glass reveal" data-reveal>
-          <img
-            class="shot"
-            src={asset("images/today.png")}
-            alt="Kairos Today screen with sparkline, check-in strip, and recent activity"
-            loading="lazy"
-          />
-          <h3>Today</h3>
-          <p>Daily status, desire check-ins, and recent activity in one focused space.</p>
-        </article>
-        <article class="preview-side glass reveal" data-reveal>
-          <img
-            class="shot"
-            src={asset("images/log-solo.png")}
-            alt="Kairos detailed logging sheet for solo activity"
-            loading="lazy"
-          />
-          <h3>Log Activity</h3>
-          <p>Progressive disclosure keeps logging fast while still supporting deep detail capture.</p>
-        </article>
+
+      <!-- Feature: Log Activity -->
+      <div class="feature-showcase feature-showcase--reverse reveal" data-reveal>
+        <div class="feature-showcase-copy">
+          <span class="feature-showcase-icon" aria-hidden="true">&#9997;&#65039;</span>
+          <h3>Configurable Logging</h3>
+          <p>
+            Every entry starts with a context — solo or partnered — and adapts from there. Two
+            logging modes let you control depth: <strong>Personal</strong> mode captures the essentials,
+            while <strong>All</strong> mode opens every field from mood and energy to protection,
+            location, and clinical notes.
+          </p>
+          <ul class="feature-bullets">
+            <li>Solo entries with full standalone detail</li>
+            <li>Partnered entries with connection context</li>
+            <li>Per-context defaults that remember your preference</li>
+            <li>Mood, energy, and desire tracked before and after</li>
+          </ul>
+        </div>
+        <div class="feature-showcase-visual">
+          <figure class="feature-phone glass">
+            <img class="shot-dark" src="/images/log-solo.png" alt="Kairos log activity screen in dark mode" loading="lazy" />
+            <img class="shot-light" src="/images/log-solo-light.png" alt="Kairos log activity screen in light mode" loading="lazy" />
+          </figure>
+        </div>
+      </div>
+
+      <!-- Feature: Timeline -->
+      <div class="feature-showcase reveal" data-reveal>
+        <div class="feature-showcase-copy">
+          <span class="feature-showcase-icon" aria-hidden="true">&#128336;</span>
+          <h3>Dual-Lane Timeline</h3>
+          <p>
+            Solo and partnered entries each get their own lane in a single chronological timeline.
+            Whether you only log solo activity or track both sides, the separation keeps patterns
+            readable and honest. Filter, scroll by month, and tap any entry for full detail.
+          </p>
+          <ul class="feature-bullets">
+            <li>Filter by All, Solo, or Together</li>
+            <li>Rich entry cards with tags and mood context</li>
+            <li>Monthly grouping with smooth scroll navigation</li>
+            <li>Duration, protection, energy, and location at a glance</li>
+          </ul>
+        </div>
+        <div class="feature-showcase-visual">
+          <figure class="feature-phone glass">
+            <img class="shot-dark" src="/images/timeline.png" alt="Kairos Timeline showing dual-lane activity history" loading="lazy" />
+            <img class="shot-light" src="/images/timeline-light.png" alt="Kairos Timeline in light mode" loading="lazy" />
+          </figure>
+        </div>
       </div>
     </section>
 
+    <!-- ════════════════ INSIGHTS ════════════════ -->
+    <section id="insights" class="section" aria-labelledby="insights-title">
+      <div class="section-head reveal" data-reveal>
+        <p class="eyebrow">Intelligence layer</p>
+        <h2 id="insights-title">Patterns you can feel. Data you can trust.</h2>
+        <p class="section-subtitle">
+          Kairos turns raw entries into narrative summaries, frequency charts, desire curves, and mood
+          correlations. Everything computed on-device.
+        </p>
+      </div>
+
+      <!-- Insights: Your Story + Summary -->
+      <div class="insights-hero reveal" data-reveal>
+        <div class="insights-hero-visual">
+          <figure class="feature-phone glass">
+            <img class="shot-dark" src="/images/insights-1.png" alt="Your Story narrative summary with entry counts and mood shift data" loading="lazy" />
+            <img class="shot-light" src="/images/insights-1-light.png" alt="Your Story narrative summary in light mode" loading="lazy" />
+          </figure>
+        </div>
+        <div class="insights-hero-copy">
+          <h3>Your Story</h3>
+          <p>
+            A natural-language summary of your recent activity. Kairos distills weeks of data into
+            clear sentences: how often, what type, your average desire, and how your mood shifted
+            after entries. No dashboards to decode.
+          </p>
+          <div class="stat-row">
+            <div class="stat">
+              <span class="stat-value">25</span>
+              <span class="stat-label">Entries</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">5.8</span>
+              <span class="stat-label">Per week</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">+2.2</span>
+              <span class="stat-label">Mood shift</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Insights gallery: scrolling row of remaining insight screens -->
+      <div class="insights-gallery-wrapper">
+      <div class="insights-gallery reveal" data-reveal>
+        <article class="insight-card glass">
+          <figure class="insight-card-visual">
+            <img class="shot-dark" src="/images/insights-2.png" alt="Activity Patterns with entry frequency chart and day-of-week breakdown" loading="lazy" />
+            <img class="shot-light" src="/images/insights-2-light.png" alt="Activity Patterns in light mode" loading="lazy" />
+          </figure>
+          <h4>Activity Patterns</h4>
+          <p>Entry frequency over time, broken down by solo and partnered activity. See which days and weeks you're most active.</p>
+        </article>
+        <article class="insight-card glass">
+          <figure class="insight-card-visual">
+            <img class="shot-dark" src="/images/insights-3.png" alt="Desire Trend showing averaged desire readings over time" loading="lazy" />
+            <img class="shot-light" src="/images/insights-3-light.png" alt="Desire Trend in light mode" loading="lazy" />
+          </figure>
+          <h4>Desire Trends</h4>
+          <p>Averaged desire readings plotted over time, with peak and daily pattern curves.</p>
+        </article>
+        <article class="insight-card glass">
+          <figure class="insight-card-visual">
+            <img class="shot-dark" src="/images/insights-4.png" alt="Desire by Day and Time showing weekday and time-of-day breakdowns" loading="lazy" />
+            <img class="shot-light" src="/images/insights-4-light.png" alt="Desire by Day and Time in light mode" loading="lazy" />
+          </figure>
+          <h4>Desire by Day &amp; Time</h4>
+          <p>Which days and times your desire peaks. Discover rhythms you didn't know you had.</p>
+        </article>
+        <article class="insight-card glass">
+          <figure class="insight-card-visual">
+            <img class="shot-dark" src="/images/insights-5.png" alt="How You Feel showing mood trend and energy levels over time" loading="lazy" />
+            <img class="shot-light" src="/images/insights-5-light.png" alt="How You Feel in light mode" loading="lazy" />
+          </figure>
+          <h4>How You Feel</h4>
+          <p>Mood before vs. after, energy levels, and emotional trends correlated with desire.</p>
+        </article>
+      </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ TOGETHER ════════════════ -->
+    <section id="together" class="section" aria-labelledby="together-title">
+      <div class="section-head reveal" data-reveal>
+        <p class="eyebrow">Optional partner sharing</p>
+        <h2 id="together-title">Shared context, separate control.</h2>
+        <p class="section-subtitle">
+          Kairos works as a complete solo tracker on its own. If you're in a relationship, you can
+          optionally connect with a partner to share desire levels, mutual entries, and connection
+          context — without exposing your solo entries or private data.
+        </p>
+      </div>
+
+      <div class="together-showcase">
+        <div class="together-card glass reveal" data-reveal>
+          <figure class="feature-phone glass">
+            <img class="shot-dark" src="/images/together.png" alt="Together tab showing partner invite flow with magic link" loading="lazy" />
+            <img class="shot-light" src="/images/together-light.png" alt="Together invite flow in light mode" loading="lazy" />
+          </figure>
+          <h3>Invite &amp; Connect</h3>
+          <p>
+            Send a magic link to your partner. Once accepted, shared data flows automatically
+            through encrypted iCloud — your solo entries stay completely private.
+          </p>
+        </div>
+        <div class="together-card glass reveal" data-reveal>
+          <figure class="feature-phone glass">
+            <img class="shot-dark" src="/images/together-shared.png" alt="Together tab showing shared partner data with desire level and activity" loading="lazy" />
+            <img class="shot-light" src="/images/together-shared-light.png" alt="Shared partner view in light mode" loading="lazy" />
+          </figure>
+          <h3>Shared Dashboard</h3>
+          <p>
+            See your partner's desire level, shared activity history, and connection status
+            at a glance. Each person controls exactly what's visible.
+          </p>
+        </div>
+      </div>
+
+      <div class="together-revocation glass reveal" data-reveal>
+        <div class="revocation-icon" aria-hidden="true">&#128274;</div>
+        <h3>You're always in control</h3>
+        <p>
+          If you disconnect, you choose what happens to shared data. You can <strong>remove your
+          entries from your partner's device entirely</strong>, or <strong>let them keep a
+          copy</strong>. Either way, the connection ends cleanly — no residual access, no
+          lingering sync.
+        </p>
+      </div>
+    </section>
+
+    <!-- ════════════════ PRIVACY ════════════════ -->
     <section id="privacy" class="section" aria-labelledby="privacy-title">
       <div class="privacy-surface glass reveal" data-reveal>
         <div>
           <p class="eyebrow">Privacy is product</p>
-          <h2 id="privacy-title">Data stays on device unless you explicitly choose otherwise.</h2>
+          <h2 id="privacy-title">Your data, your device, your private iCloud database.</h2>
           <p>
-            Biometric lock, discreet mode foundations, and least-privilege permissions keep control
-            with the person using Kairos.
+            Kairos syncs automatically to your private CloudKit database — encrypted in transit
+            and at rest, stored in a container only your devices can read. Not even Apple can
+            access it. No opt-in, no toggle. This is how it works by default, following Apple's
+            best practices for sensitive health data.
           </p>
         </div>
         <ul class="privacy-list">
-          <li>No third-party analytics SDKs</li>
+          <li>Automatic encrypted iCloud sync to your private database</li>
+          <li>No third-party analytics SDKs — zero external data collection</li>
           <li>Point-of-need permission requests only</li>
           <li>Clinical export support for care conversations</li>
+          <li>No advertising, no data brokering, ever</li>
         </ul>
       </div>
     </section>
 
+    <!-- ════════════════ WAITLIST ════════════════ -->
     <section id="waitlist" class="section cta reveal" data-reveal>
       <div class="waitlist glass">
         <p class="eyebrow">Launch</p>
@@ -204,88 +381,24 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
   </main>
 
   <footer class="wrapper footer">
-    <p>Kairos. Privacy-first sexual health tracking for iOS.</p>
+    <div class="footer-content glass">
+      <div class="footer-brand">
+        <img class="footer-icon" src="/images/app-icon.png" alt="" width="32" height="32" />
+        <span class="footer-name">Kairos</span>
+      </div>
+      <p class="footer-tagline">Privacy-first sexual health tracking for iOS.</p>
+      <div class="footer-links">
+        <a href="mailto:hello@kairos-app.com">Contact</a>
+        <a href="#privacy">Privacy</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Kairos. All rights reserved.</p>
+    </div>
   </footer>
 
   <script>
-    const themeStorageKey = "kairos-theme";
-    const themeRoot = document.documentElement;
-    const themeToggle = document.querySelector("[data-theme-toggle]");
-    const themeToggleLabel = document.querySelector("[data-theme-toggle-label]");
-    const systemThemeMedia = window.matchMedia("(prefers-color-scheme: dark)");
-
-    const getStoredTheme = () => {
-      try {
-        return localStorage.getItem(themeStorageKey);
-      } catch {
-        return null;
-      }
-    };
-
-    const setStoredTheme = (value) => {
-      try {
-        localStorage.setItem(themeStorageKey, value);
-      } catch {
-        // Ignore storage failures (private browsing or restricted environments).
-      }
-    };
-
-    const resolveTheme = () => {
-      const storedTheme = getStoredTheme();
-      if (storedTheme === "dark" || storedTheme === "light") {
-        return storedTheme;
-      }
-
-      return systemThemeMedia.matches ? "dark" : "light";
-    };
-
-    const updateThemeToggle = (activeTheme) => {
-      if (!themeToggle || !themeToggleLabel) {
-        return;
-      }
-
-      const nextTheme = activeTheme === "dark" ? "light" : "dark";
-      const nextThemeLabel = nextTheme === "dark" ? "Dark" : "Light";
-      themeToggleLabel.textContent = nextThemeLabel;
-      themeToggle.setAttribute("aria-label", `Switch to ${nextTheme} mode`);
-      themeToggle.setAttribute("aria-pressed", String(activeTheme === "dark"));
-    };
-
-    const applyTheme = (theme, persist = false) => {
-      const normalizedTheme = theme === "dark" ? "dark" : "light";
-      themeRoot.setAttribute("data-theme", normalizedTheme);
-      themeRoot.style.colorScheme = normalizedTheme;
-
-      if (persist) {
-        setStoredTheme(normalizedTheme);
-      }
-
-      updateThemeToggle(normalizedTheme);
-    };
-
-    applyTheme(resolveTheme(), false);
-
-    if (themeToggle) {
-      themeToggle.addEventListener("click", () => {
-        const currentTheme = themeRoot.getAttribute("data-theme") === "dark" ? "dark" : "light";
-        const nextTheme = currentTheme === "dark" ? "light" : "dark";
-        applyTheme(nextTheme, true);
-      });
-    }
-
-    if (typeof systemThemeMedia.addEventListener === "function") {
-      systemThemeMedia.addEventListener("change", (event) => {
-        const storedTheme = getStoredTheme();
-        if (storedTheme === "dark" || storedTheme === "light") {
-          return;
-        }
-
-        applyTheme(event.matches ? "dark" : "light", false);
-      });
-    }
-
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+    /* --- Scroll reveal --- */
     const revealElements = Array.from(document.querySelectorAll("[data-reveal]"));
     if (revealElements.length > 0) {
       if (reduceMotion) {
@@ -300,13 +413,14 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
               }
             });
           },
-          { threshold: 0.16, rootMargin: "0px 0px -8% 0px" }
+          { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
         );
 
         revealElements.forEach((element) => revealObserver.observe(element));
       }
     }
 
+    /* --- Sticky header + parallax --- */
     const header = document.querySelector("[data-header]");
     const parallaxElements = Array.from(document.querySelectorAll("[data-parallax]"));
 
@@ -338,6 +452,51 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
         },
         { passive: true }
       );
+    }
+
+    /* --- Theme toggle --- */
+    const themeToggle = document.querySelector("[data-theme-toggle]");
+    if (themeToggle) {
+      // Restore saved preference on load
+      const saved = localStorage.getItem("kairos-theme");
+      if (saved === "dark" || saved === "light") {
+        document.documentElement.setAttribute("data-theme", saved);
+      }
+
+      themeToggle.addEventListener("click", () => {
+        const current = document.documentElement.getAttribute("data-theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        let next;
+        if (current === "dark") {
+          next = "light";
+        } else if (current === "light") {
+          next = "dark";
+        } else {
+          // No manual override set — toggle away from system default
+          next = prefersDark ? "light" : "dark";
+        }
+
+        document.documentElement.setAttribute("data-theme", next);
+        localStorage.setItem("kairos-theme", next);
+      });
+    }
+
+    /* --- Mobile nav toggle --- */
+    const navToggle = document.querySelector("[data-nav-toggle]");
+    const nav = document.querySelector("[data-nav]");
+    if (navToggle && nav) {
+      navToggle.addEventListener("click", () => {
+        const expanded = navToggle.getAttribute("aria-expanded") === "true";
+        navToggle.setAttribute("aria-expanded", String(!expanded));
+        nav.classList.toggle("is-open");
+      });
+      nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navToggle.setAttribute("aria-expanded", "false");
+          nav.classList.remove("is-open");
+        });
+      });
     }
   </script>
 </BaseLayout>
