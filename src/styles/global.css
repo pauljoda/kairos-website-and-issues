@@ -983,6 +983,81 @@ nav a:hover {
   gap: var(--space-s);
 }
 
+/* --- Privacy Policy page --- */
+.policy-hero {
+  margin-bottom: var(--space-xxl);
+}
+
+.policy-header {
+  max-width: var(--max-content-width);
+}
+
+.policy-header h1 {
+  max-width: none;
+  font-size: clamp(2rem, 4.5vw, 3.6rem);
+}
+
+.policy-effective {
+  margin-top: var(--space-m);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.policy-body {
+  max-width: var(--max-content-width);
+  padding: clamp(var(--space-xxl), 4vw, var(--space-xxxxl));
+  margin-bottom: var(--space-xxxxl);
+}
+
+.policy-section {
+  margin-bottom: var(--space-xxxl);
+}
+
+.policy-section:last-child {
+  margin-bottom: 0;
+}
+
+.policy-section h2 {
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  font-weight: 600;
+  margin-bottom: var(--space-m);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue",
+               system-ui, Arial, sans-serif;
+}
+
+.policy-section p {
+  margin: 0 0 var(--space-l);
+  line-height: 1.7;
+}
+
+.policy-section p:last-child {
+  margin-bottom: 0;
+}
+
+.policy-section ul {
+  margin: 0 0 var(--space-l);
+  padding-left: 1.25rem;
+  display: grid;
+  gap: var(--space-s);
+  line-height: 1.7;
+}
+
+.policy-section ul:last-child {
+  margin-bottom: 0;
+}
+
+.policy-section a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.policy-section a:hover {
+  text-decoration: underline;
+}
+
 /* --- Waitlist CTA --- */
 .cta .waitlist {
   padding: var(--space-xxxxl) var(--space-xxl);

@@ -1,0 +1,301 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const baseUrl = import.meta.env.BASE_URL;
+const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
+---
+
+<BaseLayout
+  title="Privacy Policy | Kairos"
+  description="Kairos privacy policy. Learn how Kairos protects your most personal health data with local-first storage, encrypted sync, and zero third-party tracking."
+>
+  <div class="atmosphere" aria-hidden="true">
+    <div class="orb orb-amber" data-parallax data-speed="0.08"></div>
+    <div class="orb orb-lavender" data-parallax data-speed="0.05"></div>
+    <div class="mesh" data-parallax data-speed="0.03"></div>
+  </div>
+
+  <header class="site-header wrapper" data-header>
+    <a class="brand" href={normalizedBaseUrl}>
+      <img class="brand-icon" src={asset("images/app-icon.png")} alt="" width="40" height="40" />
+      <span>Kairos</span>
+    </a>
+    <div class="header-actions">
+      <button class="theme-toggle" aria-label="Toggle theme" data-theme-toggle>
+        <span class="icon-sun" aria-hidden="true">&#9728;&#65039;</span>
+        <span class="icon-moon" aria-hidden="true">&#9789;&#65039;</span>
+      </button>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" data-nav-toggle>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
+    <nav data-nav>
+      <a href={normalizedBaseUrl}>Home</a>
+      <a href={`${normalizedBaseUrl}#features`}>Features</a>
+      <a href={`${normalizedBaseUrl}#insights`}>Insights</a>
+      <a href={`${normalizedBaseUrl}#together`}>Together</a>
+      <a class="cta-link" href={`${normalizedBaseUrl}#waitlist`}>Get updates</a>
+    </nav>
+  </header>
+
+  <main class="wrapper">
+    <section class="section policy-hero" aria-labelledby="policy-title">
+      <div class="policy-header reveal" data-reveal>
+        <p class="eyebrow">Legal</p>
+        <h1 id="policy-title">Privacy Policy</h1>
+        <p class="policy-effective">Effective date: February 27, 2026</p>
+      </div>
+    </section>
+
+    <article class="policy-body glass reveal" data-reveal>
+
+      <section class="policy-section">
+        <h2>Our Commitment</h2>
+        <p>
+          Kairos is a privacy-first sexual health tracking app. Your data belongs to you. We designed
+          Kairos so that your most personal information never leaves your control. This policy explains
+          exactly what data Kairos handles, where it lives, and what we never do.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>Data Storage</h2>
+        <p>
+          All data you enter into Kairos — entries, check-ins, partner details, custom fields, journal
+          notes, and settings — is stored locally on your device in an encrypted SQLite database.
+        </p>
+        <p>
+          If you are signed into iCloud, Kairos automatically syncs your data to your
+          <strong>private CloudKit database</strong>. This is a database that only your devices can
+          access. It is encrypted in transit and at rest by Apple. No one else — not even Apple or the
+          Kairos team — can read your private CloudKit data.
+        </p>
+        <p>
+          There is no Kairos server. There is no centralized database. Your data exists only on your
+          devices and in your private iCloud container.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>Partner Sync</h2>
+        <p>
+          Kairos offers an optional partner sync feature. If you choose to connect with a partner, a
+          limited subset of your data is shared via an encrypted CloudKit shared zone. You control which
+          fields are shared through selective sharing policies.
+        </p>
+        <ul>
+          <li>Solo entries are <strong>never</strong> shared with a partner.</li>
+          <li>You choose what partnered data fields your partner can see.</li>
+          <li>If you disconnect, you can remove your data from your partner's device entirely, or let them keep a copy. Either way, the sync connection ends completely.</li>
+        </ul>
+      </section>
+
+      <section class="policy-section">
+        <h2>HealthKit</h2>
+        <p>
+          Kairos can optionally read data from Apple Health (sleep, workouts, active energy, sexual
+          activity) to show correlations in your Insights dashboard. Kairos can also write sexual activity
+          data back to Apple Health if you enable it per entry.
+        </p>
+        <p>
+          HealthKit access is requested only when you first interact with a Health feature. Data read
+          from HealthKit stays on your device and is never transmitted anywhere. We follow Apple's
+          HealthKit guidelines and never use health data for advertising or data mining.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>Contacts &amp; Location</h2>
+        <p>
+          Kairos may request access to your Contacts to help you quickly import a partner's name and
+          details. Contact data is used only for local display and is never transmitted.
+        </p>
+        <p>
+          Kairos may request location access to tag entries with where they happened. Location data is
+          stored locally and synced only to your private iCloud container. Location is never shared with
+          partners or third parties.
+        </p>
+        <p>
+          Both permissions are requested only at point of need — never on first launch.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>What We Collect</h2>
+        <p>
+          <strong>Nothing.</strong> Kairos contains no analytics SDKs, no tracking pixels, no crash
+          reporting services, and no server-side telemetry. We do not collect, transmit, store, or
+          process any of your personal data on our servers, because we do not have servers that receive
+          your data.
+        </p>
+        <p>
+          We do not know who our users are, how they use the app, or what data they enter. This is by
+          design.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>Third Parties</h2>
+        <p>
+          Kairos does not share data with any third parties. There are no advertising networks, analytics
+          providers, data brokers, or external services that receive your information.
+        </p>
+        <p>
+          The only external service Kairos communicates with is Apple's CloudKit, which is part of your
+          iCloud account and governed by Apple's privacy policy.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>Data Retention &amp; Deletion</h2>
+        <p>
+          Your data persists as long as it exists on your device and in your iCloud account. If you
+          delete the app, your local database is removed. If you delete data from your iCloud storage,
+          it is removed from all synced devices.
+        </p>
+        <p>
+          Because we do not maintain servers or databases containing your information, there is no
+          data to request deletion of from us. You have complete control over your data at all times.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>Children's Privacy</h2>
+        <p>
+          Kairos is not intended for use by anyone under the age of 17. We do not knowingly collect
+          information from children. The app's content and purpose are designed for adults.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>Changes to This Policy</h2>
+        <p>
+          If we make material changes to this privacy policy, we will update the effective date at the
+          top of this page and notify users through the app or our website. Because we collect no data,
+          changes will primarily reflect new features and how they handle information locally.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>Contact</h2>
+        <p>
+          If you have questions about this privacy policy or Kairos's data practices, contact us at
+          <a href="mailto:hello@kairos-app.com">hello@kairos-app.com</a>.
+        </p>
+      </section>
+
+    </article>
+  </main>
+
+  <footer class="wrapper footer">
+    <div class="footer-content glass">
+      <div class="footer-brand">
+        <img class="footer-icon" src={asset("images/app-icon.png")} alt="" width="32" height="32" />
+        <span class="footer-name">Kairos</span>
+      </div>
+      <p class="footer-tagline">Privacy-first sexual health tracking for iOS.</p>
+      <div class="footer-links">
+        <a href="mailto:hello@kairos-app.com">Contact</a>
+        <a href={`${normalizedBaseUrl}privacy`}>Privacy</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Kairos. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* --- Scroll reveal --- */
+    const revealElements = Array.from(document.querySelectorAll("[data-reveal]"));
+    if (revealElements.length > 0) {
+      if (reduceMotion) {
+        revealElements.forEach((element) => element.classList.add("in-view"));
+      } else {
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("in-view");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
+        );
+        revealElements.forEach((element) => revealObserver.observe(element));
+      }
+    }
+
+    /* --- Sticky header + parallax --- */
+    const header = document.querySelector("[data-header]");
+    const parallaxElements = Array.from(document.querySelectorAll("[data-parallax]"));
+
+    if (!reduceMotion && (header || parallaxElements.length > 0)) {
+      let ticking = false;
+      const updateOnScroll = () => {
+        const scrollY = window.scrollY;
+        if (header) {
+          header.classList.toggle("is-scrolled", scrollY > 12);
+        }
+        for (const element of parallaxElements) {
+          const speed = Number(element.getAttribute("data-speed") || "0");
+          element.style.transform = `translate3d(0, ${scrollY * speed}px, 0)`;
+        }
+        ticking = false;
+      };
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!ticking) {
+            window.requestAnimationFrame(updateOnScroll);
+            ticking = true;
+          }
+        },
+        { passive: true }
+      );
+    }
+
+    /* --- Theme toggle --- */
+    const themeToggle = document.querySelector("[data-theme-toggle]");
+    if (themeToggle) {
+      const saved = localStorage.getItem("kairos-theme");
+      if (saved === "dark" || saved === "light") {
+        document.documentElement.setAttribute("data-theme", saved);
+      }
+      themeToggle.addEventListener("click", () => {
+        const current = document.documentElement.getAttribute("data-theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        let next;
+        if (current === "dark") {
+          next = "light";
+        } else if (current === "light") {
+          next = "dark";
+        } else {
+          next = prefersDark ? "light" : "dark";
+        }
+        document.documentElement.setAttribute("data-theme", next);
+        localStorage.setItem("kairos-theme", next);
+      });
+    }
+
+    /* --- Mobile nav toggle --- */
+    const navToggle = document.querySelector("[data-nav-toggle]");
+    const nav = document.querySelector("[data-nav]");
+    if (navToggle && nav) {
+      navToggle.addEventListener("click", () => {
+        const expanded = navToggle.getAttribute("aria-expanded") === "true";
+        navToggle.setAttribute("aria-expanded", String(!expanded));
+        nav.classList.toggle("is-open");
+      });
+      nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navToggle.setAttribute("aria-expanded", "false");
+          nav.classList.remove("is-open");
+        });
+      });
+    }
+  </script>
+</BaseLayout>
