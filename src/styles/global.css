@@ -136,6 +136,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip; /* prevent horizontal scroll from full-bleed elements */
 }
 
 html,
@@ -1228,7 +1229,7 @@ nav a:hover {
 /* --- Responsive: Mobile (<720px) --- */
 @media (max-width: 720px) {
   .wrapper {
-    width: min(var(--page-max-width), calc(100% - var(--space-l)));
+    width: min(var(--page-max-width), calc(100% - var(--space-xxxxl)));
   }
 
   .nav-toggle {
@@ -1294,6 +1295,12 @@ nav a:hover {
 
   .story:last-child {
     grid-column: auto;
+  }
+
+  /* Align carousel edge-padding to the new mobile wrapper margins (20px per side) */
+  .insights-gallery {
+    padding-left: var(--space-xl);
+    padding-right: var(--space-xl);
   }
 }
 
