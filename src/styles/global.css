@@ -153,13 +153,13 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: clip; /* prevent horizontal scroll from full-bleed elements */
+  overflow-x: clip;
 }
 
 html,
 body {
   margin: 0;
-  min-height: 100%;
+  min-height: 100dvh;
 }
 
 /* --- Body & atmosphere --- */
@@ -169,7 +169,6 @@ body {
   color: var(--text-body);
   background: var(--backdrop-base);
   line-height: 1.55;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -477,6 +476,19 @@ nav a:hover {
 
 .cta-link:hover {
   transform: translateY(-1px) scale(1.02);
+}
+
+/* Nav-only CTA: hidden on desktop, visible inside mobile dropdown */
+.nav-cta {
+  display: none;
+}
+
+@media (max-width: 980px) {
+  .nav-cta {
+    display: inline-flex;
+    align-self: flex-start;
+    margin-top: var(--space-xs);
+  }
 }
 
 /* Header actions container (theme toggle + hamburger) */
@@ -1369,19 +1381,19 @@ nav a:hover {
 
 .together-showcase .reveal:nth-child(2) { transition-delay: 120ms; }
 
-/* --- Responsive: Tablet (720–980px) --- */
+/* --- Responsive: Tablet & Mobile (<980px) --- */
 @media (max-width: 980px) {
+  /* --- Nav: collapse to hamburger --- */
   .site-header {
     width: calc(100% - 2rem);
     height: auto;
-    min-height: 56px;
-    padding: var(--space-s) var(--space-m);
+    min-height: 52px;
+    padding: 10px 16px;
     transition: none;
+    flex-wrap: wrap;
   }
 
   .site-header.is-open {
-    flex-direction: column;
-    align-items: flex-start;
     border-radius: var(--radius-xl);
   }
 
@@ -1389,33 +1401,40 @@ nav a:hover {
     display: none;
     flex-direction: column;
     width: 100%;
-    gap: var(--space-m);
-    padding: var(--space-l) 0 var(--space-m);
+    gap: 4px;
+    padding: var(--space-s) 0;
+    border-top: 1px solid var(--glass-stroke);
+    margin: 8px 0 0;
+    order: 10; /* push below the top row */
+  }
+
+  nav a {
+    padding: 10px 0;
   }
 
   nav.is-open {
     display: flex;
   }
 
-  .header-actions {
-    position: absolute;
-    top: 10px;
-    right: var(--space-s);
+  /* Hide CTA from the top row; it's accessible in the dropdown nav */
+  .header-actions .cta-link {
+    display: none;
   }
 
   .nav-toggle {
     display: flex;
   }
 
+  /* --- Hero --- */
   .hero {
-    padding-top: calc(var(--nav-height) + 5vh);
+    padding-top: calc(80px + 3vh);
     min-height: auto;
   }
 
   .phone-stack {
     flex-direction: column;
     min-height: auto;
-    gap: var(--space-xl);
+    gap: var(--space-l);
   }
 
   .phone-main, .phone-offset {
@@ -1424,10 +1443,15 @@ nav a:hover {
     position: relative;
   }
 
+  /* --- Grids to single column --- */
   .feature-showcase {
     grid-template-columns: 1fr;
-    gap: var(--space-xxl);
-    text-align: left;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xxl);
+  }
+
+  .feature-showcase:nth-child(even) {
+    margin-top: 0;
   }
 
   .feature-showcase--reverse {
@@ -1438,26 +1462,59 @@ nav a:hover {
     order: -1;
   }
 
-  .insights-hero,
-  .together-showcase,
+  .feature-phone {
+    width: min(18rem, 100%);
+  }
+
+  .insights-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .together-showcase {
+    grid-template-columns: 1fr;
+  }
+
   .privacy-surface {
     grid-template-columns: 1fr;
-    padding: var(--space-xl);
+    padding: var(--space-l);
+    gap: var(--space-l);
+  }
+
+  /* Reduce oversized paddings */
+  .together-card {
+    padding: var(--space-l);
+  }
+
+  .together-revocation {
+    padding: var(--space-l);
+  }
+
+  .cta .waitlist {
+    padding: var(--space-xl) var(--space-l);
+  }
+
+  .stat-row {
+    gap: var(--space-xl);
   }
 }
 
-/* --- Responsive: Mobile (<720px) --- */
+/* --- Responsive: Small mobile (<720px) --- */
 @media (max-width: 720px) {
   .wrapper {
-    width: min(var(--page-max-width), calc(100% - var(--space-xxxxl)));
+    width: calc(100% - 32px);
   }
 
   h1 {
-    font-size: clamp(2.4rem, 10vw, 3.2rem);
+    font-size: clamp(2rem, 9vw, 3rem);
   }
 
   .intro {
-    font-size: 1.1rem;
+    font-size: 1rem;
+  }
+
+  .hero {
+    padding-top: calc(72px + 2vh);
+    gap: var(--space-l);
   }
 
   .hero-actions {
@@ -1471,30 +1528,109 @@ nav a:hover {
 
   .hero-points {
     flex-direction: column;
-    gap: var(--space-s);
+    gap: var(--space-xs);
     align-items: center;
   }
 
+  .hero-points li {
+    padding: 8px 20px;
+    font-size: 0.85rem;
+  }
+
+  .hero-visual {
+    margin-top: 0;
+  }
+
+  .phone {
+    width: min(16rem, 80vw);
+  }
+
   .section {
-    margin-bottom: var(--space-xxxl);
+    margin-bottom: var(--space-xxl);
+  }
+
+  .section-head {
+    margin-bottom: var(--space-l);
+  }
+
+  .story-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-showcase-copy {
+    padding: 0;
   }
 
   .feature-showcase-copy h3 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .feature-showcase-copy p {
-    font-size: 1.1rem;
+    font-size: 1rem;
+  }
+
+  .feature-bullets li {
+    font-size: 1rem;
+  }
+
+  .insights-hero-copy h3 {
+    font-size: 1.5rem;
+  }
+
+  .insights-hero-copy p {
+    font-size: 1.05rem;
+  }
+
+  .stat-row {
+    gap: var(--space-l);
+    flex-wrap: wrap;
+  }
+
+  .stat-value {
+    font-size: 2rem;
   }
 
   .insight-card {
     flex: 0 0 85vw;
+    padding: var(--space-m);
   }
 
-  /* Align carousel edge-padding to the new mobile wrapper margins (20px per side) */
   .insights-gallery {
-    padding-left: var(--space-xl);
-    padding-right: var(--space-xl);
+    padding-left: 16px;
+    padding-right: 16px;
+    gap: var(--space-l);
+  }
+
+  .together-card h3 {
+    font-size: 1.6rem;
+  }
+
+  .together-card p {
+    font-size: 1.05rem;
+  }
+
+  .together-revocation h3 {
+    font-size: 1.6rem;
+  }
+
+  .together-revocation p {
+    font-size: 1.05rem;
+  }
+
+  .revocation-icon {
+    font-size: 2.5rem;
+  }
+
+  .privacy-surface h2 {
+    font-size: 1.6rem;
+  }
+
+  .privacy-surface p {
+    font-size: 1.05rem;
+  }
+
+  .footer-content {
+    padding: var(--space-l) var(--space-s);
   }
 }
 
