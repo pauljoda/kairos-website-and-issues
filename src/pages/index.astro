@@ -7,18 +7,30 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
 ---
 
 <BaseLayout>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
   <div class="atmosphere" aria-hidden="true">
-    <div class="orb orb-amber" data-parallax data-speed="0.08"></div>
-    <div class="orb orb-lavender" data-parallax data-speed="0.05"></div>
-    <div class="mesh" data-parallax data-speed="0.03"></div>
+    <div class="orb orb-amber"></div>
+    <div class="orb orb-lavender"></div>
+    <div class="aura" aria-hidden="true"></div>
   </div>
 
-  <header class="site-header wrapper" data-header>
+  <header class="site-header" data-header>
     <a class="brand" href="#top">
-      <img class="brand-icon" src={asset("images/app-icon.png")} alt="" width="40" height="40" />
+      <img class="brand-icon" src={asset("images/app-icon.png")} alt="" width="32" height="32" />
       <span>Kairos</span>
     </a>
+    
+    <nav data-nav>
+      <a href="#why">Why Kairos</a>
+      <a href="#features">Features</a>
+      <a href="#insights">Insights</a>
+      <a href="#together">Together</a>
+      <a href="#privacy">Privacy</a>
+    </nav>
+
     <div class="header-actions">
+      <a class="cta-link" href="https://testflight.apple.com/join/HBPTWXBH">Join TestFlight</a>
       <button class="theme-toggle" aria-label="Toggle theme" data-theme-toggle>
         <span class="icon-sun" aria-hidden="true">&#9728;&#65039;</span>
         <span class="icon-moon" aria-hidden="true">&#9789;&#65039;</span>
@@ -29,21 +41,13 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
         <span class="nav-toggle-bar"></span>
       </button>
     </div>
-    <nav data-nav>
-      <a href="#why">Why Kairos</a>
-      <a href="#features">Features</a>
-      <a href="#insights">Insights</a>
-      <a href="#together">Together</a>
-      <a href="#privacy">Privacy</a>
-      <a class="cta-link" href="https://testflight.apple.com/join/HBPTWXBH">Join TestFlight</a>
-    </nav>
   </header>
 
   <main id="top" class="wrapper">
 
     <!-- ════════════════ HERO ════════════════ -->
     <section class="section hero" aria-labelledby="hero-title">
-      <div class="hero-copy glass reveal" data-reveal>
+      <div class="hero-copy reveal" data-reveal>
         <p class="eyebrow">Sexual Health Tracking for iPhone</p>
         <h1 id="hero-title">A modern health app for your most personal rhythms.</h1>
         <p class="intro">
@@ -57,38 +61,38 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
         </div>
         <ul class="hero-points" aria-label="Key product highlights">
           <li>Solo &amp; partnered tracking</li>
-          <li>Automatic encrypted sync</li>
           <li>On-device intelligence</li>
+          <li>Encrypted sync via iCloud</li>
         </ul>
       </div>
 
       <div class="hero-visual reveal" data-reveal>
-        <div class="phone-stack" data-parallax data-speed="0.12">
+        <div class="phone-stack">
           <figure class="phone phone-main glass">
             <img
               class="shot-dark"
               src={asset("images/today.png")}
-              alt="Kairos Today screen with daily status, check-in, and activity feed"
+              alt="Kairos Today screen"
               loading="eager"
             />
             <img
               class="shot-light"
               src={asset("images/today-light.png")}
-              alt="Kairos Today screen with daily status, check-in, and activity feed"
+              alt="Kairos Today screen"
               loading="eager"
             />
           </figure>
           <figure class="phone phone-offset glass">
             <img
               class="shot-dark"
-              src={asset("images/log-solo.png")}
-              alt="Kairos log entry screen showing detailed solo entry logging"
+              src={asset("images/together-shared.png")}
+              alt="Kairos Together screen"
               loading="lazy"
             />
             <img
               class="shot-light"
-              src={asset("images/log-solo-light.png")}
-              alt="Kairos log entry screen showing detailed solo entry logging"
+              src={asset("images/together-shared-light.png")}
+              alt="Kairos Together screen"
               loading="lazy"
             />
           </figure>
@@ -104,7 +108,27 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
       </div>
       <div class="story-grid">
         <article class="story glass reveal" data-reveal>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
           <p class="story-index">01</p>
+          <h3>Warm, not sterile</h3>
+          <p>
+            Amber and lavender tones, layered materials, and gentle motion create emotional safety
+            without sacrificing clarity. The visual language should feel premium, warm, and clinical 
+            rather than decorative.
+          </p>
+        </article>
+        <article class="story glass reveal" data-reveal>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/>
+              <path d="M12 7v5l3 3"/>
+            </svg>
+          </div>
+          <p class="story-index">02</p>
           <h3>Health-first language</h3>
           <p>
             Kairos avoids euphemistic design. It treats sexual health with the same precision and
@@ -112,19 +136,15 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
           </p>
         </article>
         <article class="story glass reveal" data-reveal>
-          <p class="story-index">02</p>
-          <h3>Warm, not sterile</h3>
-          <p>
-            Amber and lavender tones, layered materials, and gentle motion create emotional safety
-            without sacrificing clarity.
-          </p>
-        </article>
-        <article class="story glass reveal" data-reveal>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+          </div>
           <p class="story-index">03</p>
           <h3>Quality over quantity</h3>
           <p>
-            The experience is built around meaning and timing, helping users understand when and why
-            shifts happen across their personal patterns.
+            Helping you understand when and why shifts happen across your personal patterns.
           </p>
         </article>
       </div>
@@ -140,7 +160,6 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
       <!-- Feature: Today Dashboard -->
       <div class="feature-showcase reveal" data-reveal>
         <div class="feature-showcase-copy">
-          <span class="feature-showcase-icon" aria-hidden="true">&#128197;</span>
           <h3>Today Dashboard</h3>
           <p>
             Your home base in Kairos. See your current desire level, recent check-ins, and activity
@@ -165,7 +184,6 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
       <!-- Feature: Log Activity -->
       <div class="feature-showcase feature-showcase--reverse reveal" data-reveal>
         <div class="feature-showcase-copy">
-          <span class="feature-showcase-icon" aria-hidden="true">&#9997;&#65039;</span>
           <h3>Configurable Logging</h3>
           <p>
             Every entry starts with a context — solo or partnered — and adapts from there. Two
@@ -191,11 +209,10 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
       <!-- Feature: Timeline -->
       <div class="feature-showcase reveal" data-reveal>
         <div class="feature-showcase-copy">
-          <span class="feature-showcase-icon" aria-hidden="true">&#128336;</span>
-          <h3>Dual-Lane Timeline</h3>
+          <h3>Unified Timeline</h3>
           <p>
-            Solo and partnered entries each get their own lane in a single chronological timeline.
-            Whether you only log solo activity or track both sides, the separation keeps patterns
+            Solo and partnered entries appear together in a single chronological timeline.
+            Whether you only log solo activity or track both sides, the history keeps patterns
             readable and honest. Filter, scroll by month, and tap any entry for full detail.
           </p>
           <ul class="feature-bullets">
@@ -207,7 +224,7 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
         </div>
         <div class="feature-showcase-visual">
           <figure class="feature-phone glass">
-            <img class="shot-dark" src={asset("images/timeline.png")} alt="Kairos Timeline showing dual-lane activity history" loading="lazy" />
+            <img class="shot-dark" src={asset("images/timeline.png")} alt="Kairos Timeline showing activity history" loading="lazy" />
             <img class="shot-light" src={asset("images/timeline-light.png")} alt="Kairos Timeline in light mode" loading="lazy" />
           </figure>
         </div>
@@ -297,7 +314,7 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
     </section>
 
     <!-- ════════════════ TOGETHER ════════════════ -->
-    <section id="together" class="section" aria-labelledby="together-title">
+    <section id="together" class="section together-section" aria-labelledby="together-title">
       <div class="section-head reveal" data-reveal>
         <p class="eyebrow">Optional partner sharing</p>
         <h2 id="together-title">Shared context, separate control.</h2>
@@ -424,33 +441,20 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
       }
     }
 
-    /* --- Sticky header + parallax --- */
+    /* --- Sticky header --- */
     const header = document.querySelector("[data-header]");
-    const parallaxElements = Array.from(document.querySelectorAll("[data-parallax]"));
 
-    if (!reduceMotion && (header || parallaxElements.length > 0)) {
+    if (!reduceMotion && header) {
       let ticking = false;
-
-      const updateOnScroll = () => {
-        const scrollY = window.scrollY;
-
-        if (header) {
-          header.classList.toggle("is-scrolled", scrollY > 12);
-        }
-
-        for (const element of parallaxElements) {
-          const speed = Number(element.getAttribute("data-speed") || "0");
-          element.style.transform = `translate3d(0, ${scrollY * speed}px, 0)`;
-        }
-
-        ticking = false;
-      };
 
       window.addEventListener(
         "scroll",
         () => {
           if (!ticking) {
-            window.requestAnimationFrame(updateOnScroll);
+            window.requestAnimationFrame(() => {
+              header.classList.toggle("is-scrolled", window.scrollY > 12);
+              ticking = false;
+            });
             ticking = true;
           }
         },
@@ -489,16 +493,21 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
     /* --- Mobile nav toggle --- */
     const navToggle = document.querySelector("[data-nav-toggle]");
     const nav = document.querySelector("[data-nav]");
-    if (navToggle && nav) {
+    const siteHeader = document.querySelector(".site-header");
+    
+    if (navToggle && nav && siteHeader) {
       navToggle.addEventListener("click", () => {
         const expanded = navToggle.getAttribute("aria-expanded") === "true";
         navToggle.setAttribute("aria-expanded", String(!expanded));
         nav.classList.toggle("is-open");
+        siteHeader.classList.toggle("is-open");
       });
+      
       nav.querySelectorAll("a").forEach((link) => {
         link.addEventListener("click", () => {
           navToggle.setAttribute("aria-expanded", "false");
           nav.classList.remove("is-open");
+          siteHeader.classList.remove("is-open");
         });
       });
     }

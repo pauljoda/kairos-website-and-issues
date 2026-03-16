@@ -10,17 +10,29 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
   title="Privacy Policy | Kairos"
   description="Kairos privacy policy. Learn how Kairos protects your most personal health data with local-first storage, encrypted sync, and zero third-party tracking."
 >
+  <div class="noise-overlay" aria-hidden="true"></div>
+
   <div class="atmosphere" aria-hidden="true">
     <div class="orb orb-amber" data-parallax data-speed="0.08"></div>
     <div class="orb orb-lavender" data-parallax data-speed="0.05"></div>
     <div class="mesh" data-parallax data-speed="0.03"></div>
+    <div class="aura" aria-hidden="true"></div>
   </div>
 
-  <header class="site-header wrapper" data-header>
+  <header class="site-header" data-header>
     <a class="brand" href={normalizedBaseUrl}>
-      <img class="brand-icon" src={asset("images/app-icon.png")} alt="" width="40" height="40" />
+      <img class="brand-icon" src={asset("images/app-icon.png")} alt="" width="32" height="32" />
       <span>Kairos</span>
     </a>
+    
+    <nav data-nav>
+      <a href={normalizedBaseUrl}>Home</a>
+      <a href={`${normalizedBaseUrl}#features`}>Features</a>
+      <a href={`${normalizedBaseUrl}#insights`}>Insights</a>
+      <a href={`${normalizedBaseUrl}#together`}>Together</a>
+      <a class="cta-link" href="https://testflight.apple.com/join/HBPTWXBH">Join TestFlight</a>
+    </nav>
+
     <div class="header-actions">
       <button class="theme-toggle" aria-label="Toggle theme" data-theme-toggle>
         <span class="icon-sun" aria-hidden="true">&#9728;&#65039;</span>
@@ -32,13 +44,6 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
         <span class="nav-toggle-bar"></span>
       </button>
     </div>
-    <nav data-nav>
-      <a href={normalizedBaseUrl}>Home</a>
-      <a href={`${normalizedBaseUrl}#features`}>Features</a>
-      <a href={`${normalizedBaseUrl}#insights`}>Insights</a>
-      <a href={`${normalizedBaseUrl}#together`}>Together</a>
-      <a class="cta-link" href="https://testflight.apple.com/join/HBPTWXBH">Join TestFlight</a>
-    </nav>
   </header>
 
   <main class="wrapper">
