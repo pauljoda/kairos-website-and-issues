@@ -1015,6 +1015,7 @@ nav a:hover {
 
 .insights-gallery {
   display: flex;
+  justify-content: center;
   gap: var(--space-xl);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
