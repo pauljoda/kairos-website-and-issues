@@ -10,9 +10,10 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
   <div class="noise-overlay" aria-hidden="true"></div>
 
   <div class="atmosphere" aria-hidden="true">
-    <div class="orb orb-amber"></div>
-    <div class="orb orb-lavender"></div>
-    <div class="aura" aria-hidden="true"></div>
+    <div class="nebula-blob nebula-1"></div>
+    <div class="nebula-blob nebula-2"></div>
+    <div class="nebula-blob nebula-3"></div>
+    <div class="nebula-blob nebula-4"></div>
   </div>
 
   <header class="site-header" data-header>
@@ -20,9 +21,8 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
       <img class="brand-icon" src={asset("images/app-icon.png")} alt="" width="32" height="32" />
       <span>Kairos</span>
     </a>
-    
+
     <nav data-nav>
-      <a href="#why">Why Kairos</a>
       <a href="#features">Features</a>
       <a href="#insights">Insights</a>
       <a href="#together">Together</a>
@@ -44,121 +44,74 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
     </div>
   </header>
 
-  <main id="top" class="wrapper">
+  <main id="top">
 
     <!-- ════════════════ HERO ════════════════ -->
-    <section class="section hero" aria-labelledby="hero-title">
-      <div class="hero-copy reveal" data-reveal>
-        <p class="eyebrow">Sexual Health Tracking for iPhone</p>
-        <h1 id="hero-title">A modern health app for your most personal rhythms.</h1>
-        <p class="intro">
-          Whether you're tracking solo, with a partner, or both — Kairos gives you a private,
-          clinical-grade picture of your sexual health. No euphemisms, no cloud you can't trust,
-          no data that leaves your device.
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy" data-reveal-hero>
+        <h1 id="hero-title">Kairos: Your most personal rhythms, unlocked.</h1>
+        <p class="hero-sub">
+          Private, clinical-grade insights for your sexual health.<br />
+          No cloud, no compromise.
         </p>
         <div class="hero-actions">
           <a class="button primary" href="https://testflight.apple.com/join/HBPTWXBH">Join TestFlight</a>
-          <a class="button secondary" href="#features">Explore the product</a>
+          <a class="button secondary" href="#features">Explore features</a>
         </div>
-        <ul class="hero-points" aria-label="Key product highlights">
-          <li>Solo &amp; partnered tracking</li>
-          <li>On-device intelligence</li>
-          <li>Encrypted sync via iCloud</li>
-        </ul>
       </div>
 
-      <div class="hero-visual reveal" data-reveal>
-        <div class="phone-stack">
-          <figure class="phone phone-main glass">
-            <img
-              class="shot-dark"
-              src={asset("images/today.png")}
-              alt="Kairos Today screen"
-              loading="eager"
-            />
-            <img
-              class="shot-light"
-              src={asset("images/today-light.png")}
-              alt="Kairos Today screen"
-              loading="eager"
-            />
-          </figure>
-          <figure class="phone phone-offset glass">
-            <img
-              class="shot-dark"
-              src={asset("images/together-shared.png")}
-              alt="Kairos Together screen"
-              loading="lazy"
-            />
-            <img
-              class="shot-light"
-              src={asset("images/together-shared-light.png")}
-              alt="Kairos Together screen"
-              loading="lazy"
-            />
-          </figure>
-        </div>
+      <div class="hero-phones" data-reveal-phones>
+        <div class="hero-phones-glow" aria-hidden="true"></div>
+        <figure class="hero-phone hero-phone--back-left">
+          <img class="shot-dark" src={asset("images/timeline.png")} alt="Kairos Timeline" loading="eager" />
+          <img class="shot-light" src={asset("images/timeline-light.png")} alt="Kairos Timeline" loading="eager" />
+        </figure>
+        <figure class="hero-phone hero-phone--back-right">
+          <img class="shot-dark" src={asset("images/together-shared.png")} alt="Kairos Together" loading="eager" />
+          <img class="shot-light" src={asset("images/together-shared-light.png")} alt="Kairos Together" loading="eager" />
+        </figure>
+        <figure class="hero-phone hero-phone--front">
+          <img class="shot-dark" src={asset("images/today.png")} alt="Kairos Today Dashboard" loading="eager" />
+          <img class="shot-light" src={asset("images/today-light.png")} alt="Kairos Today Dashboard" loading="eager" />
+        </figure>
       </div>
     </section>
 
-    <!-- ════════════════ WHY KAIROS ════════════════ -->
-    <section id="why" class="section narrative" aria-labelledby="why-title">
-      <div class="section-head reveal" data-reveal>
-        <p class="eyebrow">Named for Kairos</p>
-        <h2 id="why-title">The Greek concept of the right moment.</h2>
-      </div>
-      <div class="story-grid">
-        <article class="story glass reveal" data-reveal>
-          <div class="story-icon" aria-hidden="true">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-            </svg>
-          </div>
-          <p class="story-index">01</p>
-          <h3>Warm, not sterile</h3>
-          <p>
-            Amber and lavender tones, layered materials, and gentle motion create emotional safety
-            without sacrificing clarity. The visual language should feel premium, warm, and clinical 
-            rather than decorative.
-          </p>
-        </article>
-        <article class="story glass reveal" data-reveal>
-          <div class="story-icon" aria-hidden="true">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/>
-              <path d="M12 7v5l3 3"/>
-            </svg>
-          </div>
-          <p class="story-index">02</p>
-          <h3>Health-first language</h3>
-          <p>
-            Kairos avoids euphemistic design. It treats sexual health with the same precision and
-            dignity expected in any clinical wellness app.
-          </p>
-        </article>
-        <article class="story glass reveal" data-reveal>
-          <div class="story-icon" aria-hidden="true">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-            </svg>
-          </div>
-          <p class="story-index">03</p>
-          <h3>Quality over quantity</h3>
-          <p>
-            Helping you understand when and why shifts happen across your personal patterns.
-          </p>
-        </article>
-      </div>
+    <!-- ════════════════ HIGHLIGHTS ════════════════ -->
+    <section class="highlights wrapper" aria-label="Key features">
+      <article class="highlight-card glass reveal" data-reveal>
+        <div class="highlight-icons" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3>Solo or Partnered Tracking</h3>
+        <p>Track solo and partnered activity as separate streams with context-aware logging and per-mode defaults.</p>
+      </article>
+      <article class="highlight-card glass reveal" data-reveal>
+        <div class="highlight-icons" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+        <h3>On-Device Intelligence</h3>
+        <p>Narrative summaries, trend charts, and pattern detection — all computed locally on your device.</p>
+      </article>
+      <article class="highlight-card glass reveal" data-reveal>
+        <div class="highlight-icons" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Encrypted Sync via iCloud</h3>
+        <p>Your data syncs to your private CloudKit database — encrypted in transit and at rest, invisible to everyone else.</p>
+      </article>
     </section>
 
     <!-- ════════════════ FEATURES ════════════════ -->
-    <section id="features" class="section" aria-labelledby="features-title">
+    <section id="features" class="section wrapper" aria-labelledby="features-title">
       <div class="section-head reveal" data-reveal>
         <p class="eyebrow">Core experience</p>
         <h2 id="features-title">Simple daily interactions, deep long-term insight.</h2>
       </div>
 
-      <!-- Feature: Today Dashboard -->
       <div class="feature-showcase reveal" data-reveal>
         <div class="feature-showcase-copy">
           <h3>Today Dashboard</h3>
@@ -182,7 +135,6 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
         </div>
       </div>
 
-      <!-- Feature: Log Activity -->
       <div class="feature-showcase feature-showcase--reverse reveal" data-reveal>
         <div class="feature-showcase-copy">
           <h3>Configurable Logging</h3>
@@ -207,7 +159,6 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
         </div>
       </div>
 
-      <!-- Feature: Timeline -->
       <div class="feature-showcase reveal" data-reveal>
         <div class="feature-showcase-copy">
           <h3>Unified Timeline</h3>
@@ -233,7 +184,7 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
     </section>
 
     <!-- ════════════════ INSIGHTS ════════════════ -->
-    <section id="insights" class="section" aria-labelledby="insights-title">
+    <section id="insights" class="section wrapper" aria-labelledby="insights-title">
       <div class="section-head reveal" data-reveal>
         <p class="eyebrow">Intelligence layer</p>
         <h2 id="insights-title">Patterns you can feel. Data you can trust.</h2>
@@ -243,12 +194,11 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
         </p>
       </div>
 
-      <!-- Insights: Your Story + Summary -->
       <div class="insights-hero reveal" data-reveal>
         <div class="insights-hero-visual">
           <figure class="feature-phone glass">
-            <img class="shot-dark" src={asset("images/insights-1.png")} alt="Your Story narrative summary with entry counts and mood shift data" loading="lazy" />
-            <img class="shot-light" src={asset("images/insights-1-light.png")} alt="Your Story narrative summary in light mode" loading="lazy" />
+            <img class="shot-dark" src={asset("images/insights-1.png")} alt="Your Story narrative summary" loading="lazy" />
+            <img class="shot-light" src={asset("images/insights-1-light.png")} alt="Your Story in light mode" loading="lazy" />
           </figure>
         </div>
         <div class="insights-hero-copy">
@@ -275,47 +225,10 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
         </div>
       </div>
 
-      <!-- Insights gallery: scrolling row of remaining insight screens -->
-      <div class="insights-gallery-wrapper">
-      <div class="insights-gallery reveal" data-reveal>
-        <article class="insight-card glass">
-          <figure class="insight-card-visual">
-            <img class="shot-dark" src={asset("images/insights-2.png")} alt="Activity Patterns with entry frequency chart and day-of-week breakdown" loading="lazy" />
-            <img class="shot-light" src={asset("images/insights-2-light.png")} alt="Activity Patterns in light mode" loading="lazy" />
-          </figure>
-          <h4>Activity Patterns</h4>
-          <p>Entry frequency over time, broken down by solo and partnered activity. See which days and weeks you're most active.</p>
-        </article>
-        <article class="insight-card glass">
-          <figure class="insight-card-visual">
-            <img class="shot-dark" src={asset("images/insights-3.png")} alt="Desire Trend showing averaged desire readings over time" loading="lazy" />
-            <img class="shot-light" src={asset("images/insights-3-light.png")} alt="Desire Trend in light mode" loading="lazy" />
-          </figure>
-          <h4>Desire Trends</h4>
-          <p>Averaged desire readings plotted over time, with peak and daily pattern curves.</p>
-        </article>
-        <article class="insight-card glass">
-          <figure class="insight-card-visual">
-            <img class="shot-dark" src={asset("images/insights-4.png")} alt="Desire by Day and Time showing weekday and time-of-day breakdowns" loading="lazy" />
-            <img class="shot-light" src={asset("images/insights-4-light.png")} alt="Desire by Day and Time in light mode" loading="lazy" />
-          </figure>
-          <h4>Desire by Day &amp; Time</h4>
-          <p>Which days and times your desire peaks. Discover rhythms you didn't know you had.</p>
-        </article>
-        <article class="insight-card glass">
-          <figure class="insight-card-visual">
-            <img class="shot-dark" src={asset("images/insights-5.png")} alt="How You Feel showing mood trend and energy levels over time" loading="lazy" />
-            <img class="shot-light" src={asset("images/insights-5-light.png")} alt="How You Feel in light mode" loading="lazy" />
-          </figure>
-          <h4>How You Feel</h4>
-          <p>Mood before vs. after, energy levels, and emotional trends correlated with desire.</p>
-        </article>
-      </div>
-      </div>
     </section>
 
     <!-- ════════════════ TOGETHER ════════════════ -->
-    <section id="together" class="section together-section" aria-labelledby="together-title">
+    <section id="together" class="section wrapper together-section" aria-labelledby="together-title">
       <div class="section-head reveal" data-reveal>
         <p class="eyebrow">Optional partner sharing</p>
         <h2 id="together-title">Shared context, separate control.</h2>
@@ -329,8 +242,8 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
       <div class="together-showcase">
         <div class="together-card glass reveal" data-reveal>
           <figure class="feature-phone glass">
-            <img class="shot-dark" src={asset("images/together.png")} alt="Together tab showing partner invite flow with magic link" loading="lazy" />
-            <img class="shot-light" src={asset("images/together-light.png")} alt="Together invite flow in light mode" loading="lazy" />
+            <img class="shot-dark" src={asset("images/together.png")} alt="Partner invite flow" loading="lazy" />
+            <img class="shot-light" src={asset("images/together-light.png")} alt="Partner invite in light mode" loading="lazy" />
           </figure>
           <h3>Invite &amp; Connect</h3>
           <p>
@@ -340,8 +253,8 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
         </div>
         <div class="together-card glass reveal" data-reveal>
           <figure class="feature-phone glass">
-            <img class="shot-dark" src={asset("images/together-shared.png")} alt="Together tab showing shared partner data with desire level and activity" loading="lazy" />
-            <img class="shot-light" src={asset("images/together-shared-light.png")} alt="Shared partner view in light mode" loading="lazy" />
+            <img class="shot-dark" src={asset("images/together-shared.png")} alt="Shared partner dashboard" loading="lazy" />
+            <img class="shot-light" src={asset("images/together-shared-light.png")} alt="Shared dashboard in light mode" loading="lazy" />
           </figure>
           <h3>Shared Dashboard</h3>
           <p>
@@ -364,7 +277,7 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
     </section>
 
     <!-- ════════════════ PRIVACY ════════════════ -->
-    <section id="privacy" class="section" aria-labelledby="privacy-title">
+    <section id="privacy" class="section wrapper" aria-labelledby="privacy-title">
       <div class="privacy-surface glass reveal" data-reveal>
         <div>
           <p class="eyebrow">Privacy is product</p>
@@ -387,7 +300,7 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
     </section>
 
     <!-- ════════════════ TESTFLIGHT ════════════════ -->
-    <section id="testflight" class="section cta reveal" data-reveal>
+    <section id="testflight" class="section wrapper cta reveal" data-reveal>
       <div class="waitlist glass">
         <p class="eyebrow">Beta</p>
         <h2>Try Kairos on TestFlight.</h2>
@@ -395,9 +308,7 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
           Kairos is available for early testing via TestFlight. Help shape the app before launch —
           your feedback matters.
         </p>
-        <a class="button primary" href="https://testflight.apple.com/join/HBPTWXBH"
-          >Join TestFlight</a
-        >
+        <a class="button primary" href="https://testflight.apple.com/join/HBPTWXBH">Join TestFlight</a>
       </div>
     </section>
   </main>
@@ -420,11 +331,25 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
   <script>
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    /* --- Scroll reveal --- */
+    /* ═══ Hero entrance ═══ */
+    const heroPhones = document.querySelector("[data-reveal-phones]");
+    const heroCopy = document.querySelector("[data-reveal-hero]");
+
+    if (!reduceMotion) {
+      requestAnimationFrame(() => {
+        if (heroCopy) heroCopy.classList.add("in-view");
+        if (heroPhones) setTimeout(() => heroPhones.classList.add("in-view"), 400);
+      });
+    } else {
+      if (heroCopy) heroCopy.classList.add("in-view");
+      if (heroPhones) heroPhones.classList.add("in-view");
+    }
+
+    /* ═══ Scroll reveal ═══ */
     const revealElements = Array.from(document.querySelectorAll("[data-reveal]"));
     if (revealElements.length > 0) {
       if (reduceMotion) {
-        revealElements.forEach((element) => element.classList.add("in-view"));
+        revealElements.forEach((el) => el.classList.add("in-view"));
       } else {
         const revealObserver = new IntersectionObserver(
           (entries) => {
@@ -437,36 +362,32 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
           },
           { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
         );
-
-        revealElements.forEach((element) => revealObserver.observe(element));
+        revealElements.forEach((el) => revealObserver.observe(el));
       }
     }
 
-    /* --- Sticky header --- */
+    /* ═══ Sticky header ═══ */
     const header = document.querySelector("[data-header]");
-
     if (!reduceMotion && header) {
-      let ticking = false;
-
+      let hTicking = false;
       window.addEventListener(
         "scroll",
         () => {
-          if (!ticking) {
-            window.requestAnimationFrame(() => {
+          if (!hTicking) {
+            requestAnimationFrame(() => {
               header.classList.toggle("is-scrolled", window.scrollY > 12);
-              ticking = false;
+              hTicking = false;
             });
-            ticking = true;
+            hTicking = true;
           }
         },
         { passive: true }
       );
     }
 
-    /* --- Theme toggle --- */
+    /* ═══ Theme toggle ═══ */
     const themeToggle = document.querySelector("[data-theme-toggle]");
     if (themeToggle) {
-      // Restore saved preference on load
       const saved = localStorage.getItem("kairos-theme");
       if (saved === "dark" || saved === "light") {
         document.documentElement.setAttribute("data-theme", saved);
@@ -475,27 +396,19 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
       themeToggle.addEventListener("click", () => {
         const current = document.documentElement.getAttribute("data-theme");
         const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
         let next;
-        if (current === "dark") {
-          next = "light";
-        } else if (current === "light") {
-          next = "dark";
-        } else {
-          // No manual override set — toggle away from system default
-          next = prefersDark ? "light" : "dark";
-        }
-
+        if (current === "dark") next = "light";
+        else if (current === "light") next = "dark";
+        else next = prefersDark ? "light" : "dark";
         document.documentElement.setAttribute("data-theme", next);
         localStorage.setItem("kairos-theme", next);
       });
     }
 
-    /* --- Mobile nav toggle --- */
+    /* ═══ Mobile nav toggle ═══ */
     const navToggle = document.querySelector("[data-nav-toggle]");
     const nav = document.querySelector("[data-nav]");
     const siteHeader = document.querySelector(".site-header");
-    
     if (navToggle && nav && siteHeader) {
       navToggle.addEventListener("click", () => {
         const expanded = navToggle.getAttribute("aria-expanded") === "true";
@@ -503,7 +416,6 @@ const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
         nav.classList.toggle("is-open");
         siteHeader.classList.toggle("is-open");
       });
-      
       nav.querySelectorAll("a").forEach((link) => {
         link.addEventListener("click", () => {
           navToggle.setAttribute("aria-expanded", "false");
