@@ -458,25 +458,14 @@ nav a:hover { color: var(--color-primary); }
 }
 .button.secondary:hover { background: var(--card-tint); }
 
-/* --- App Store badge --- */
-.app-store-badge {
-  display: inline-block;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+/* --- App Store button --- */
+.app-store-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
 }
-.app-store-badge:hover {
-  opacity: 0.85;
-  transform: translateY(-1px);
-}
-.app-store-badge:active {
-  transform: translateY(0) scale(0.98);
-}
-.app-store-badge svg {
-  display: block;
-}
-/* Invert badge in light mode for better contrast */
-:root[data-theme="light"] .hero .app-store-badge svg rect:first-child,
-:root:not([data-theme]) .hero .app-store-badge svg rect:first-child {
-  fill: #000;
+.apple-icon {
+  flex-shrink: 0;
 }
 
 /* --- Screenshot theme switching --- */
@@ -1188,8 +1177,8 @@ nav a:hover { color: var(--color-primary); }
 
   .hero { padding-top: calc(72px + 2vh); gap: var(--space-l); }
   .hero-sub { font-size: 1rem; }
-  .hero-actions { flex-direction: column; width: 100%; padding: 0 var(--space-s); }
-  .hero-actions .button { width: 100%; }
+  .hero-actions { flex-direction: column; align-items: center; width: 100%; padding: 0 var(--space-s); }
+  .hero-actions .button { width: 100%; justify-content: center; }
   .hero-phones { max-width: 100%; }
   .hero-phone--back-left { left: 2%; }
   .hero-phone--back-right { right: 2%; }
