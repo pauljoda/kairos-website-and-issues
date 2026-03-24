@@ -458,6 +458,27 @@ nav a:hover { color: var(--color-primary); }
 }
 .button.secondary:hover { background: var(--card-tint); }
 
+/* --- App Store badge --- */
+.app-store-badge {
+  display: inline-block;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.app-store-badge:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+.app-store-badge:active {
+  transform: translateY(0) scale(0.98);
+}
+.app-store-badge svg {
+  display: block;
+}
+/* Invert badge in light mode for better contrast */
+:root[data-theme="light"] .hero .app-store-badge svg rect:first-child,
+:root:not([data-theme]) .hero .app-store-badge svg rect:first-child {
+  fill: #000;
+}
+
 /* --- Screenshot theme switching --- */
 .shot-dark { display: none !important; }
 .shot-light { display: block !important; }
