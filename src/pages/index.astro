@@ -4,9 +4,48 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 const baseUrl = import.meta.env.BASE_URL;
 const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
 const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
+const appStoreUrl = "https://apps.apple.com/us/app/kairos-intimacy-tracker/id6759538995";
+const siteUrl = "https://kairossexualhealth.com/";
+const appIconUrl = new URL(asset("images/app-icon.png"), siteUrl).toString();
+const homeSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Kairos",
+    url: siteUrl,
+    description:
+      "Kairos is a privacy-first iOS app for sexual health tracking with local-first data, dual-lane insights, and warm clinical design.",
+    potentialAction: {
+      "@type": "DownloadAction",
+      target: appStoreUrl
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    name: "Kairos Intimacy Tracker",
+    applicationCategory: "HealthApplication",
+    operatingSystem: "iOS",
+    url: siteUrl,
+    downloadUrl: appStoreUrl,
+    image: appIconUrl,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD"
+    },
+    featureList: [
+      "Private sexual health tracking",
+      "Solo and partnered activity logging",
+      "On-device insights and trend summaries",
+      "Encrypted iCloud sync",
+      "Optional partner sharing"
+    ]
+  }
+];
 ---
 
-<BaseLayout>
+<BaseLayout schema={homeSchema}>
   <div class="noise-overlay" aria-hidden="true"></div>
 
   <div class="atmosphere" aria-hidden="true">
