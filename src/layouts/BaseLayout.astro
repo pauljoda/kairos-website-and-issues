@@ -4,18 +4,22 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   description?: string;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
   title = "Kairos | Privacy-first sexual health tracking",
-  description = "Kairos is a privacy-first iOS app for sexual health tracking with local-first data, dual-lane insights, and warm clinical design."
+  description = "Kairos is a privacy-first iOS app for sexual health tracking with local-first data, dual-lane insights, and warm clinical design.",
+  schema
 } = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL;
 const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
 const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toString();
 const ogImagePath = asset("images/app-icon.png");
 const ogImage = new URL(ogImagePath, Astro.site ?? Astro.url).toString();
+const schemaJson = schema ? JSON.stringify(schema).replace(/</g, "\\u003c") : undefined;
 ---
 
 <!doctype html>
@@ -24,11 +28,15 @@ const ogImage = new URL(ogImagePath, Astro.site ?? Astro.url).toString();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
     <title>{title}</title>
     <link rel="icon" type="image/png" href={ogImagePath} />
@@ -38,6 +46,7 @@ const ogImage = new URL(ogImagePath, Astro.site ?? Astro.url).toString();
       href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap"
       rel="stylesheet"
     />
+    {schemaJson && <script type="application/ld+json" set:html={schemaJson} />}
   </head>
   <body>
     <slot />
