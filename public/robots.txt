@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kairossexualhealth.com/sitemap-index.xml

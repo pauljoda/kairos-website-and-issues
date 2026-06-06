@@ -4,11 +4,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 const baseUrl = import.meta.env.BASE_URL;
 const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
 const asset = (path) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
+const privacySchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Privacy Policy | Kairos",
+  url: "https://kairossexualhealth.com/privacy",
+  description:
+    "Kairos privacy policy. Learn how Kairos protects your most personal health data with local-first storage, encrypted sync, and zero third-party tracking.",
+  isPartOf: {
+    "@type": "WebSite",
+    name: "Kairos",
+    url: "https://kairossexualhealth.com/"
+  }
+};
 ---
 
 <BaseLayout
   title="Privacy Policy | Kairos"
   description="Kairos privacy policy. Learn how Kairos protects your most personal health data with local-first storage, encrypted sync, and zero third-party tracking."
+  schema={privacySchema}
 >
   <div class="noise-overlay" aria-hidden="true"></div>
 
