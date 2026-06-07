@@ -10,7 +10,7 @@ const privacySchema = {
   name: "Privacy Policy | Kairos",
   url: "https://kairossexualhealth.com/privacy",
   description:
-    "Kairos privacy policy. Learn how Kairos protects your most personal health data with local-first storage, encrypted sync, and zero third-party tracking.",
+    "Kairos privacy policy. Learn how Kairos protects your most personal health data with local-first storage, encrypted sync, and privacy-preserving website analytics.",
   isPartOf: {
     "@type": "WebSite",
     name: "Kairos",
@@ -21,7 +21,7 @@ const privacySchema = {
 
 <BaseLayout
   title="Privacy Policy | Kairos"
-  description="Kairos privacy policy. Learn how Kairos protects your most personal health data with local-first storage, encrypted sync, and zero third-party tracking."
+  description="Kairos privacy policy. Learn how Kairos protects your most personal health data with local-first storage, encrypted sync, and privacy-preserving website analytics."
   schema={privacySchema}
 >
   <div class="noise-overlay" aria-hidden="true"></div>
@@ -145,22 +145,32 @@ const privacySchema = {
       <section class="policy-section">
         <h2>What We Collect</h2>
         <p>
-          <strong>Nothing.</strong> Kairos contains no analytics SDKs, no tracking pixels, no crash
-          reporting services, and no server-side telemetry. We do not collect, transmit, store, or
-          process any of your personal data on our servers, because we do not have servers that receive
-          your data.
+          The Kairos iOS app contains no analytics SDKs, no tracking pixels, no crash reporting
+          services, and no server-side telemetry. We do not collect, transmit, store, or process your
+          in-app personal data on our servers, because we do not have servers that receive your data.
         </p>
         <p>
-          We do not know who our users are, how they use the app, or what data they enter. This is by
-          design.
+          The public Kairos website uses Umami Cloud for privacy-preserving, aggregate website analytics
+          such as page views and referrers. This helps us understand whether people can find the site;
+          it does not include app usage, account data, health data, journal content, or anything you
+          enter into Kairos.
+        </p>
+        <p>
+          We do not know who our app users are, how they use the app, or what data they enter. This is
+          by design.
         </p>
       </section>
 
       <section class="policy-section">
         <h2>Third Parties</h2>
         <p>
-          Kairos does not share data with any third parties. There are no advertising networks, analytics
-          providers, data brokers, or external services that receive your information.
+          Kairos does not share your in-app data with any third parties. There are no advertising
+          networks, in-app analytics providers, data brokers, or external services that receive your
+          Kairos app information.
+        </p>
+        <p>
+          The public website loads Umami Cloud analytics to measure aggregate website traffic. Umami is
+          not installed in the iOS app and does not receive Kairos app data.
         </p>
         <p>
           The only external service Kairos communicates with is Apple's CloudKit, which is part of your
