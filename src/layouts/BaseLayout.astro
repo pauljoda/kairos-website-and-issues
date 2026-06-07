@@ -46,6 +46,13 @@ const schemaJson = schema ? JSON.stringify(schema).replace(/</g, "\\u003c") : un
       href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap"
       rel="stylesheet"
     />
+    <script
+      is:inline
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="23d622d0-b4aa-466c-b342-ed1ce8242f94"
+      data-do-not-track="true"
+    ></script>
     {schemaJson && <script type="application/ld+json" set:html={schemaJson} />}
   </head>
   <body>

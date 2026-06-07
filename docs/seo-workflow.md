@@ -9,7 +9,7 @@ Improve qualified discovery for Kairos so more people searching for private sexu
 1. **Measure**
    - Use Google Search Console for indexing, queries, impressions, CTR, and page-level performance.
    - Use privacy-preserving public signals where available: App Store listing metadata, public rankings, backlinks, and page indexing status.
-   - Kairos intentionally avoids third-party analytics SDKs and tracking pixels; SEO decisions should respect that privacy promise.
+   - Kairos intentionally avoids in-app analytics SDKs and tracking pixels for app data; public-site analytics should stay privacy-preserving and consistent with the privacy policy.
 
 2. **Prioritize**
    - Technical SEO issues that block crawling/indexing first.
@@ -18,7 +18,7 @@ Improve qualified discovery for Kairos so more people searching for private sexu
    - Content/backlink work fourth.
 
 3. **Implement**
-   - Track work in this repository's GitHub issues.
+   - Track Kairos SEO work in `/home/hermes/kairos-seo/kairos-seo-board.md` and the dedicated Kairos SEO Slack channel/thread unless Paul explicitly asks for repository issue tracking.
    - Use small PRs with one SEO hypothesis per PR when possible.
    - Validate with `npm run build` before merging.
 
@@ -28,6 +28,20 @@ Improve qualified discovery for Kairos so more people searching for private sexu
    - Re-check query/impression trends after enough time has passed for Google to crawl and rank changes.
 
 ## Cadence
+
+Before each SEO planning pass, refresh the local Search Console baseline from Hermes:
+
+```bash
+/home/hermes/kairos-seo/search_console_flow.py --inspect
+```
+
+That command writes:
+
+- `/home/hermes/kairos-seo/search-console/latest.md` — human-readable current baseline
+- `/home/hermes/kairos-seo/search-console/latest.json` — machine-readable data for follow-up analysis
+
+Use the `sc-domain:kairossexualhealth.com` property as the Search Console source of truth.
+Route recurring SEO reports and planning updates to Slack target `slack:C0B8XH635FW:1780807305.138359`.
 
 - **Initial setup:** technical crawl/indexing foundation, Search Console access, baseline keyword map, ASO audit.
 - **Weekly:** review Search Console query/page data, choose the next small improvement, implement or open issues.
@@ -47,5 +61,5 @@ Improve qualified discovery for Kairos so more people searching for private sexu
 
 - Keep language clinical, warm, and privacy-first.
 - Avoid sensational or exploitative phrasing.
-- Do not add tracking pixels or third-party analytics unless explicitly approved and consistent with the privacy policy.
+- Public-site analytics must stay privacy-preserving, currently Umami Cloud for aggregate website traffic only; do not add in-app analytics or app-data tracking without explicit approval and privacy-policy updates.
 - Be careful with health claims; position Kairos as insight/journaling support, not diagnosis or treatment.
