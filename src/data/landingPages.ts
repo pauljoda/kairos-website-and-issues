@@ -218,7 +218,7 @@ export const landingPages = [
       {
         question: "Can Kairos help with mismatched desire?",
         answer:
-          "Kairos can help couples observe timing and context around desire. It is not medical advice or therapy, but it can support clearer, lower-pressure conversations."
+          "Kairos can help couples observe timing and context around desire. It is not a care provider, but it can support clearer, lower-pressure conversations."
       },
       {
         question: "Can either partner disconnect?",
@@ -277,9 +277,9 @@ export const landingPages = [
           "Yes. Kairos is designed for private entries, with optional partner sync only for selected shared context."
       },
       {
-        question: "Does Kairos replace medical advice?",
+        question: "Is Kairos a medical tool?",
         answer:
-          "No. Kairos is for personal insight and journaling. It does not diagnose, treat, or replace professional medical advice."
+          "No. Kairos is for personal insight and journaling, not clinical guidance or a replacement for professional care."
       }
     ]
   }
