@@ -13,7 +13,7 @@ Improve qualified discovery for Kairos so more people searching for private sexu
 
 2. **Prioritize**
    - Technical SEO issues that block crawling/indexing first.
-   - High-intent landing pages second: private sexual health tracker, intimacy tracker, libido tracker, relationship desire tracking, partner intimacy tracking.
+   - High-intent landing pages second. Use `docs/landing-page-roadmap.md` as the implementation brief for private sexual health tracker, intimacy tracker, libido tracker, relationship desire tracker, and sexual wellness journal pages.
    - App Store Optimization (ASO) third: listing title/subtitle/keywords/screenshots/reviews.
    - Content/backlink work fourth.
 
@@ -21,6 +21,7 @@ Improve qualified discovery for Kairos so more people searching for private sexu
    - Track Kairos SEO work in `/home/hermes/kairos-seo/kairos-seo-board.md` and the dedicated Kairos SEO Slack channel/thread unless Paul explicitly asks for repository issue tracking.
    - Use small PRs with one SEO hypothesis per PR when possible.
    - Validate with `npm run build` before merging.
+   - Keep all new public pages on the shared layout so canonical tags, JSON-LD support, sitemap generation, and the privacy-preserving Umami tracker stay consistent.
 
 4. **Verify**
    - Confirm generated pages include title, description, canonical URL, Open Graph/Twitter tags, structured data when relevant, robots.txt, and sitemap output.
