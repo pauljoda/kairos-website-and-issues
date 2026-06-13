@@ -1,0 +1,310 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { appStoreUrl, landingPageLinks, landingPages, siteUrl, type LandingPage } from "../data/landingPages";
+
+export function getStaticPaths() {
+  return landingPages.map((page) => ({
+    params: { slug: page.slug },
+    props: { page }
+  }));
+}
+
+interface Props {
+  page: LandingPage;
+}
+
+const { page } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+const asset = (path: string) => `${normalizedBaseUrl}${path.replace(/^\//, "")}`;
+const pageUrl = new URL(`${page.slug}/`, siteUrl).toString();
+const appIconUrl = new URL(asset("images/app-icon.png"), siteUrl).toString();
+const faqSchema = page.faq.length
+  ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: page.faq.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer
+        }
+      }))
+    }
+  : undefined;
+const pageSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: page.title,
+    url: pageUrl,
+    description: page.description,
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Kairos",
+      url: siteUrl
+    },
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: appIconUrl
+    }
+  },
+  ...(faqSchema ? [faqSchema] : [])
+];
+---
+
+<BaseLayout title={page.title} description={page.description} schema={pageSchema}>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div class="atmosphere" aria-hidden="true">
+    <div class="nebula-blob nebula-1"></div>
+    <div class="nebula-blob nebula-2"></div>
+    <div class="nebula-blob nebula-3"></div>
+    <div class="nebula-blob nebula-4"></div>
+  </div>
+
+  <header class="site-header" data-header>
+    <a class="brand" href={normalizedBaseUrl}>
+      <img class="brand-icon" src={asset("images/app-icon.png")} alt="" width="32" height="32" />
+      <span>Kairos</span>
+    </a>
+
+    <nav data-nav>
+      <a href={normalizedBaseUrl}>Home</a>
+      <a href={`${normalizedBaseUrl}#features`}>Features</a>
+      <a href={`${normalizedBaseUrl}#insights`}>Insights</a>
+      <a href={`${normalizedBaseUrl}#privacy`}>Privacy</a>
+      <a
+        class="cta-link nav-cta"
+        href={appStoreUrl}
+        data-umami-event="app-store-click"
+        data-umami-event-page={page.slug}
+      >Download</a>
+    </nav>
+
+    <div class="header-actions">
+      <a
+        class="cta-link"
+        href={appStoreUrl}
+        data-umami-event="app-store-click"
+        data-umami-event-page={page.slug}
+      >Download</a>
+      <button class="theme-toggle" aria-label="Toggle theme" data-theme-toggle>
+        <span class="icon-sun" aria-hidden="true">&#9728;&#65039;</span>
+        <span class="icon-moon" aria-hidden="true">&#9789;&#65039;</span>
+      </button>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" data-nav-toggle>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero landing-hero" aria-labelledby="landing-title">
+      <div class="hero-copy" data-reveal-hero>
+        <p class="eyebrow">{page.eyebrow}</p>
+        <h1 id="landing-title">{page.h1}</h1>
+        <p class="hero-sub">{page.intro}</p>
+        <div class="hero-actions">
+          <a
+            class="button primary app-store-btn"
+            href={appStoreUrl}
+            data-umami-event="app-store-click"
+            data-umami-event-page={page.slug}
+          >
+            <svg class="apple-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="16" height="16" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184 4 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-62.1 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" /></svg>
+            Download on the App Store
+          </a>
+          <a class="button secondary" href="#learn-more">Learn more</a>
+        </div>
+      </div>
+
+      <div class="hero-phones" data-reveal-phones>
+        <div class="hero-phones-glow" aria-hidden="true"></div>
+        <figure class="hero-phone hero-phone--front">
+          <img class="shot-dark" src={asset(page.primaryImage)} alt={page.imageAlt} loading="eager" />
+          <img class="shot-light" src={asset(page.primaryImageLight)} alt={`${page.imageAlt} in light mode`} loading="eager" />
+        </figure>
+      </div>
+    </section>
+
+    <section id="learn-more" class="section wrapper" aria-labelledby="details-title">
+      <div class="section-head reveal" data-reveal>
+        <p class="eyebrow">Private patterns, not pressure</p>
+        <h2 id="details-title">Built for intimate self-understanding.</h2>
+        <p class="section-subtitle">
+          Kairos is a private journal and tracker for noticing patterns across desire, intimacy,
+          mood, energy, connection, and timing. It is not a diagnostic or treatment tool.
+        </p>
+      </div>
+
+      <div class="highlights landing-grid">
+        {page.sections.map((section) => (
+          <article class="highlight-card glass reveal" data-reveal>
+            <h3>{section.heading}</h3>
+            <p>{section.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section wrapper cta reveal" data-reveal aria-labelledby="landing-download-title">
+      <div class="waitlist glass">
+        <p class="eyebrow">Available on iPhone</p>
+        <h2 id="landing-download-title">Start privately with Kairos.</h2>
+        <p>
+          Track intimacy, libido, desire, mood, and connection patterns with local-first data,
+          encrypted iCloud sync, and no in-app analytics SDKs.
+        </p>
+        <a
+          class="button primary app-store-btn"
+          href={appStoreUrl}
+          data-umami-event="app-store-click"
+          data-umami-event-page={page.slug}
+        >
+          <svg class="apple-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="16" height="16" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184 4 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-62.1 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" /></svg>
+          Download on the App Store
+        </a>
+      </div>
+    </section>
+
+    <section class="section wrapper" aria-labelledby="faq-title">
+      <div class="section-head reveal" data-reveal>
+        <p class="eyebrow">Questions</p>
+        <h2 id="faq-title">Frequently asked questions</h2>
+      </div>
+      <div class="landing-faq">
+        {page.faq.map((item) => (
+          <details class="glass reveal" data-reveal>
+            <summary>{item.question}</summary>
+            <p>{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section class="section wrapper" aria-labelledby="cluster-title">
+      <div class="section-head reveal" data-reveal>
+        <p class="eyebrow">Explore</p>
+        <h2 id="cluster-title">Explore more ways to use Kairos</h2>
+      </div>
+      <div class="highlights landing-grid landing-links">
+        {landingPageLinks.map((link) => (
+          <a class="highlight-card glass reveal" data-reveal href={`/${link.slug}/`}>
+            <h3>{link.label}</h3>
+            <p>Learn how Kairos supports private insight, journaling, and pattern recognition for this use case.</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrapper footer">
+    <div class="footer-content glass">
+      <div class="footer-brand">
+        <img class="footer-icon" src={asset("images/app-icon.png")} alt="" width="32" height="32" />
+        <span class="footer-name">Kairos</span>
+      </div>
+      <p class="footer-tagline">Privacy-first sexual health tracking for iOS.</p>
+      <div class="footer-links">
+        <a href="mailto:help@kairossexualhealth.com">Contact</a>
+        <a href={`${normalizedBaseUrl}privacy`}>Privacy</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Kairos. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const heroPhones = document.querySelector("[data-reveal-phones]");
+    const heroCopy = document.querySelector("[data-reveal-hero]");
+    if (!reduceMotion) {
+      requestAnimationFrame(() => {
+        if (heroCopy) heroCopy.classList.add("in-view");
+        if (heroPhones) setTimeout(() => heroPhones.classList.add("in-view"), 400);
+      });
+    } else {
+      if (heroCopy) heroCopy.classList.add("in-view");
+      if (heroPhones) heroPhones.classList.add("in-view");
+    }
+
+    const revealElements = Array.from(document.querySelectorAll("[data-reveal]"));
+    if (revealElements.length > 0) {
+      if (reduceMotion) {
+        revealElements.forEach((el) => el.classList.add("in-view"));
+      } else {
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("in-view");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
+        );
+        revealElements.forEach((el) => revealObserver.observe(el));
+      }
+    }
+
+    const header = document.querySelector("[data-header]");
+    if (!reduceMotion && header) {
+      let hTicking = false;
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!hTicking) {
+            requestAnimationFrame(() => {
+              header.classList.toggle("is-scrolled", window.scrollY > 12);
+              hTicking = false;
+            });
+            hTicking = true;
+          }
+        },
+        { passive: true }
+      );
+    }
+
+    const themeToggle = document.querySelector("[data-theme-toggle]");
+    if (themeToggle) {
+      const saved = localStorage.getItem("kairos-theme");
+      if (saved === "dark" || saved === "light") {
+        document.documentElement.setAttribute("data-theme", saved);
+      }
+      themeToggle.addEventListener("click", () => {
+        const current = document.documentElement.getAttribute("data-theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        let next;
+        if (current === "dark") next = "light";
+        else if (current === "light") next = "dark";
+        else next = prefersDark ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        localStorage.setItem("kairos-theme", next);
+      });
+    }
+
+    const navToggle = document.querySelector("[data-nav-toggle]");
+    const nav = document.querySelector("[data-nav]");
+    const siteHeader = document.querySelector(".site-header");
+    if (navToggle && nav && siteHeader) {
+      navToggle.addEventListener("click", () => {
+        const expanded = navToggle.getAttribute("aria-expanded") === "true";
+        navToggle.setAttribute("aria-expanded", String(!expanded));
+        nav.classList.toggle("is-open");
+        siteHeader.classList.toggle("is-open");
+      });
+      nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navToggle.setAttribute("aria-expanded", "false");
+          nav.classList.remove("is-open");
+          siteHeader.classList.remove("is-open");
+        });
+      });
+    }
+  </script>
+</BaseLayout>

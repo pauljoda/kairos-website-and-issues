@@ -1048,6 +1048,130 @@ nav a:hover { color: var(--color-primary); }
 .waitlist .button { margin-top: var(--space-xl); }
 
 /* ════════════════════════════════════════════════
+   SEO LANDING PAGES
+   ════════════════════════════════════════════════ */
+.landing-main {
+  padding-top: calc(var(--nav-height) + var(--space-xxxl));
+}
+
+.landing-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.68fr);
+  gap: var(--space-xxxl);
+  align-items: center;
+  margin-bottom: var(--space-section);
+}
+
+.landing-hero-copy h1 {
+  max-width: 11ch;
+}
+
+.landing-hero-sub {
+  margin: var(--space-l) 0 var(--space-xl);
+  max-width: 56ch;
+  font-size: clamp(1.12rem, 1.8vw, 1.36rem);
+  line-height: 1.6;
+}
+
+.landing-actions {
+  justify-content: flex-start;
+}
+
+.landing-phone {
+  width: min(22rem, 100%);
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 3rem;
+  box-shadow: var(--shadow-strong);
+}
+
+.landing-phone img {
+  display: block;
+  width: 100%;
+  border-radius: 2.6rem;
+}
+
+.landing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-l);
+}
+
+.landing-card {
+  padding: var(--space-xl);
+}
+
+.landing-card h2 {
+  font-size: clamp(1.45rem, 2.5vw, 2rem);
+  margin-bottom: var(--space-m);
+}
+
+.landing-card p {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.65;
+}
+
+.landing-privacy,
+.landing-links {
+  display: grid;
+  grid-template-columns: 0.72fr 1fr;
+  gap: var(--space-xxl);
+  align-items: start;
+  padding: var(--space-xxl);
+}
+
+.landing-privacy h2,
+.landing-links h2 {
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
+
+.landing-privacy p {
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.65;
+}
+
+.landing-faq-list {
+  display: grid;
+  gap: var(--space-m);
+}
+
+.landing-faq details {
+  padding: var(--space-l);
+}
+
+.landing-faq summary {
+  cursor: pointer;
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.landing-faq details p {
+  margin: var(--space-m) 0 0;
+  line-height: 1.65;
+}
+
+.landing-links ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--space-s);
+}
+
+.landing-links a {
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.landing-links a:hover {
+  text-decoration: underline;
+}
+
+/* ════════════════════════════════════════════════
    PRIVACY POLICY PAGE
    ════════════════════════════════════════════════ */
 .policy-hero { margin-bottom: var(--space-xxl); }
@@ -1162,6 +1286,14 @@ nav a:hover { color: var(--color-primary); }
   .insights-hero { grid-template-columns: 1fr; }
   .together-showcase { grid-template-columns: 1fr; }
   .privacy-surface { grid-template-columns: 1fr; padding: var(--space-l); gap: var(--space-l); }
+  .landing-main { padding-top: calc(var(--nav-height) + var(--space-xl)); }
+  .landing-hero,
+  .landing-grid,
+  .landing-privacy,
+  .landing-links { grid-template-columns: 1fr; }
+  .landing-hero { gap: var(--space-xl); }
+  .landing-phone { width: min(18rem, 100%); order: -1; }
+  .landing-actions { justify-content: center; }
   .together-card { padding: var(--space-l); }
   .together-revocation { padding: var(--space-l); }
   .cta .waitlist { padding: var(--space-xl) var(--space-l); }
