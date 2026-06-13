@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "verify:seo-pages": "node scripts/verify-seo-pages.mjs"
+    "verify:seo-pages": "node scripts/verify-seo-pages.mjs",
+    "verify:scroll-performance": "node scripts/verify-scroll-performance.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

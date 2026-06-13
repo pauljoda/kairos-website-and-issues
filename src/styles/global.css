@@ -140,7 +140,6 @@ img { max-width: 100%; height: auto; }
   position: absolute;
   border-radius: 50%;
   filter: blur(90px);
-  will-change: transform;
   opacity: 0.6;
 }
 
@@ -148,43 +147,24 @@ img { max-width: 100%; height: auto; }
   width: 55vw; height: 55vw;
   background: radial-gradient(circle, rgba(120, 78, 175, 0.7), transparent 70%);
   top: -15%; left: -8%;
-  animation: drift-1 30s ease-in-out infinite;
 }
 
 .nebula-2 {
   width: 50vw; height: 50vw;
   background: radial-gradient(circle, rgba(180, 130, 78, 0.6), transparent 70%);
   bottom: -10%; right: -8%;
-  animation: drift-2 25s ease-in-out infinite;
 }
 
 .nebula-3 {
   width: 40vw; height: 40vw;
   background: radial-gradient(circle, rgba(150, 105, 185, 0.5), transparent 70%);
   top: 35%; right: 15%;
-  animation: drift-3 35s ease-in-out infinite;
 }
 
 .nebula-4 {
   width: 35vw; height: 35vw;
   background: radial-gradient(circle, rgba(170, 125, 78, 0.45), transparent 70%);
   top: 55%; left: 5%;
-  animation: drift-1 28s ease-in-out infinite reverse;
-}
-
-@keyframes drift-1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(3vw, -4vw) scale(1.08); }
-  66% { transform: translate(-2vw, 2vw) scale(0.95); }
-}
-@keyframes drift-2 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(-3vw, 2vw) scale(1.05); }
-  66% { transform: translate(2vw, -3vw) scale(0.97); }
-}
-@keyframes drift-3 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(2vw, 3vw) scale(1.06); }
 }
 
 .noise-overlay {
